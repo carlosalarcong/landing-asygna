@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asygna · Gestión de turnos inteligente</title>
+  <meta name="description" content="Asygna simplifica la planificación de equipos rotativos y la gestión financiera de tu organización, desde una sola plataforma.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand: #1D9E75;
+      --brand-light: #E1F5EE;
+      --brand-mid: #0F6E56;
+      --brand-dark: #085041;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b7280;
+      --border: rgba(0,0,0,0.1);
+      --border-strong: rgba(0,0,0,0.18);
+      --surface: #ffffff;
+      --surface-2: #f7f7f5;
+      --serif: 'DM Serif Display', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--surface-2); color: var(--text-primary); }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem; border-bottom: 0.5px solid var(--border);
+      position: sticky; top: 0; background: var(--surface); z-index: 100;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 22px; color: var(--text-primary); letter-spacing: -0.5px; text-decoration: none; }
+    .nav-logo span { color: var(--brand); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); text-decoration: none; font-weight: 400; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 8px 20px; border-radius: 6px; background: var(--brand); color: #fff; border: none; cursor: pointer; text-decoration: none; }
+    .nav-cta:hover { background: var(--brand-mid); }
+
+    /* HERO */
+    .hero-wrap { background: var(--surface); }
+    .hero { text-align: center; padding: 5rem 2rem 3rem; max-width: 780px; margin: 0 auto; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-mid); background: var(--brand-light); padding: 6px 14px; border-radius: 100px; margin-bottom: 2rem; }
+    .hero-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+    h1 { font-family: var(--serif); font-size: clamp(42px, 6vw, 68px); line-height: 1.08; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -1px; }
+    h1 em { font-style: italic; color: var(--brand); transition: opacity 0.3s; }
+    .hero-sub { font-size: 18px; font-weight: 300; color: var(--text-secondary); line-height: 1.7; max-width: 560px; margin: 0 auto 2.5rem; transition: opacity 0.25s; }
+    .hero-actions { display: flex; align-items: center; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 13px 28px; border-radius: 8px; background: var(--brand); color: #fff; border: none; cursor: pointer; text-decoration: none; }
+    .btn-primary:hover { background: var(--brand-mid); }
+    .btn-ghost { font-family: var(--sans); font-size: 15px; font-weight: 400; padding: 13px 28px; border-radius: 8px; background: transparent; color: var(--text-primary); border: 0.5px solid var(--border-strong); cursor: pointer; text-decoration: none; }
+    .btn-ghost:hover { background: var(--surface-2); }
+    .hero-note { font-size: 13px; color: var(--text-secondary); margin-top: 1rem; }
+
+    /* INDUSTRY BAR */
+    .industry-bar { background: var(--surface); padding: 1.5rem 2rem 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .industry-label { font-size: 12px; font-weight: 400; color: var(--text-secondary); letter-spacing: 0.04em; }
+    .industry-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--text-secondary); background: transparent; border: 0.5px solid var(--border); padding: 7px 16px; border-radius: 100px; cursor: pointer; transition: all 0.18s; }
+    .pill i { font-size: 14px; }
+    .pill:hover { border-color: var(--brand); color: var(--brand-mid); background: var(--brand-light); }
+    .pill.active { border-color: var(--brand); color: var(--brand-dark); background: var(--brand-light); font-weight: 500; }
+
+    /* PREVIEW STRIP */
+    .preview-wrap { background: var(--surface); padding: 0 2rem 2.5rem; }
+    .industry-preview { border: 0.5px solid var(--border); border-radius: 10px; background: var(--surface-2); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; max-width: 780px; margin: 0 auto; transition: opacity 0.2s; }
+    .preview-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .preview-icon i { font-size: 22px; color: var(--brand-mid); }
+    .preview-text { flex: 1; }
+    .preview-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 3px; }
+    .preview-desc { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.5; }
+    .preview-badge { font-size: 11px; font-weight: 500; white-space: nowrap; background: var(--brand-light); color: var(--brand-mid); padding: 4px 12px; border-radius: 100px; flex-shrink: 0; visibility: hidden; }
+
+    /* STATS */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); background: var(--surface); }
+    .stat-item { padding: 2.5rem 2rem; text-align: center; border-right: 0.5px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: var(--serif); font-size: 42px; color: var(--text-primary); line-height: 1; }
+    .stat-num span { color: var(--brand); }
+    .stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 6px; font-weight: 300; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2.5rem; }
+    .section-label { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-mid); margin-bottom: 1rem; }
+    h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 46px); line-height: 1.12; color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 1rem; }
+    .section-sub { font-size: 17px; font-weight: 300; color: var(--text-secondary); line-height: 1.7; max-width: 520px; }
+
+    /* FEATURES */
+    #features { background: var(--surface); }
+    .features-header { margin-bottom: 4rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .feature-card { background: var(--surface); padding: 2rem; }
+    .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--brand-light); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .feature-icon i { font-size: 20px; color: var(--brand-mid); }
+    .feature-title { font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .feature-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; font-weight: 300; }
+
+    /* PRICING */
+    #pricing { background: var(--surface-2); }
+    .pricing-header { text-align: center; margin-bottom: 1.5rem; }
+    .pricing-header h2, .pricing-header .section-label { text-align: center; }
+    .pricing-header .section-sub { margin: 0 auto; text-align: center; }
+    .billing-toggle { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 2rem 0 3rem; }
+    .toggle-label { font-size: 14px; color: var(--text-secondary); }
+    .toggle-label.active { color: var(--text-primary); font-weight: 500; }
+    .toggle-pill-btn { width: 44px; height: 24px; border-radius: 100px; background: var(--brand); border: none; cursor: pointer; position: relative; flex-shrink: 0; }
+    .toggle-thumb { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: #fff; top: 3px; left: 3px; transition: transform 0.2s; }
+    .toggle-thumb.annual { transform: translateX(20px); }
+    .badge-save { font-size: 11px; font-weight: 500; background: var(--brand-light); color: var(--brand-mid); padding: 3px 10px; border-radius: 100px; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .plan-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.75rem; position: relative; }
+    .plan-card.featured { border: 2px solid var(--brand); }
+    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 500; background: var(--brand); color: #fff; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+    .plan-name { font-size: 13px; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .plan-price { font-family: var(--serif); font-size: 38px; color: var(--text-primary); line-height: 1; margin-bottom: 0.25rem; }
+    .plan-price sub { font-family: var(--sans); font-size: 14px; color: var(--text-secondary); font-weight: 300; }
+    .plan-period { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .plan-licenses { font-size: 13px; color: var(--brand-mid); font-weight: 500; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.75rem; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--text-primary); font-weight: 300; }
+    .plan-features li i { color: var(--brand); margin-top: 2px; font-size: 16px; flex-shrink: 0; }
+    .plan-features li.disabled { color: var(--text-secondary); }
+    .plan-features li.disabled i { color: #ccc; }
+    .plan-btn { width: 100%; font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 11px; border-radius: 8px; cursor: pointer; text-decoration: none; display: block; text-align: center; }
+    .plan-btn-outline { background: transparent; color: var(--text-primary); border: 0.5px solid var(--border-strong); }
+    .plan-btn-outline:hover { background: var(--surface-2); }
+    .plan-btn-solid { background: var(--brand); color: #fff; border: none; }
+    .plan-btn-solid:hover { background: var(--brand-mid); }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--surface); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+    .testimonial-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.75rem; }
+    .testimonial-quote { font-size: 15px; color: var(--text-primary); font-weight: 300; line-height: 1.65; margin-bottom: 1.25rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .author-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+    .author-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+    .author-role { font-size: 12px; color: var(--text-secondary); }
+    .stars { display: flex; gap: 2px; margin-bottom: 1rem; }
+    .stars i { font-size: 14px; color: #EF9F27; }
+
+    /* FAQ */
+    #faq { background: var(--surface-2); }
+    .faq-inner { max-width: 680px; margin: 0 auto; }
+    .faq-header { margin-bottom: 3rem; }
+    .faq-item { border-bottom: 0.5px solid var(--border); }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; background: transparent; border: none; cursor: pointer; text-align: left; gap: 1rem; font-family: var(--sans); }
+    .faq-q-text { font-size: 15px; font-weight: 400; color: var(--text-primary); }
+    .faq-q i { font-size: 18px; color: var(--text-secondary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-q.open i { transform: rotate(180deg); }
+    .faq-a { font-size: 14px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; padding-bottom: 1.25rem; display: none; }
+    .faq-a.open { display: block; }
+
+    /* CONTACT */
+    #contact { background: var(--surface); }
+    .contact-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .contact-inner .section-sub { margin: 0 auto 2.5rem; text-align: center; }
+    .contact-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+    input[type=text], input[type=email], select, textarea { font-family: var(--sans); font-size: 14px; color: var(--text-primary); background: var(--surface); border: 0.5px solid var(--border-strong); border-radius: 8px; padding: 10px 14px; width: 100%; outline: none; }
+    input[type=text]:focus, input[type=email]:focus, select:focus, textarea:focus { border-color: var(--brand); }
+    input::placeholder, textarea::placeholder { color: var(--text-secondary); }
+    select { appearance: none; cursor: pointer; }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit { width: 100%; font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 13px; border-radius: 8px; background: var(--brand); color: #fff; border: none; cursor: pointer; margin-top: 4px; }
+    .form-submit:hover { background: var(--brand-mid); }
+
+    /* FOOTER */
+    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--surface); }
+    .footer-logo { font-family: var(--serif); font-size: 18px; color: var(--text-primary); text-decoration: none; }
+    .footer-logo span { color: var(--brand); }
+    .footer-copy { font-size: 13px; color: var(--text-secondary); }
+
+    .fade { animation: fadeIn 0.25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .industry-preview { flex-wrap: wrap; }
+      .preview-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">asy<span>g</span>na</a>
+  <div class="nav-links">
+    <a href="#features">Funciones</a>
+    <a href="#pricing">Precios</a>
+    <a href="#testimonials">Clientes</a>
+    <a href="#contact">Contacto</a>
+  </div>
+  <a class="nav-cta" href="#contact">Solicitar demo</a>
+</nav>
+
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Gestión de turnos inteligente</div>
+    <h1>Asigna turnos.<br>Sin el <em id="hero-industry">caos.</em></h1>
+    <p class="hero-sub" id="hero-sub">Asygna simplifica la planificación de equipos rotativos y la gestión financiera de tu organización, desde una sola plataforma.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">Comenzar gratis</a>
+      <a class="btn-ghost" href="#pricing">Ver planes</a>
+    </div>
+    <p class="hero-note">Sin tarjeta de crédito · Configuración en minutos</p>
+  </div>
+
+  <div class="industry-bar">
+    <span class="industry-label">Soluciones por industria</span>
+    <div class="industry-pills" id="pills-container"></div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="industry-preview" id="industry-preview">
+      <div class="preview-icon"><i class="ti ti-layout-grid"></i></div>
+      <div class="preview-text">
+        <div class="preview-title" id="preview-title">Selecciona un rubro para ver cómo Asygna se adapta</div>
+        <div class="preview-desc" id="preview-desc">Cada industria tiene sus propios desafíos de turno. Asygna viene preconfigurado para los más comunes.</div>
+      </div>
+      <div class="preview-badge" id="preview-badge"></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-num">+<span>12k</span></div><div class="stat-label">Turnos asignados</div></div>
+  <div class="stat-item"><div class="stat-num"><span>98</span>%</div><div class="stat-label">Satisfacción de clientes</div></div>
+  <div class="stat-item"><div class="stat-num">-<span>60</span>%</div><div class="stat-label">Tiempo en planificación</div></div>
+  <div class="stat-item"><div class="stat-num"><span>24</span>/7</div><div class="stat-label">Soporte incluido</div></div>
+</div>
+
+<section id="features">
+  <div class="features-header">
+    <div class="section-label">Funciones</div>
+    <h2>Todo lo que necesitas<br>en un solo lugar</h2>
+    <p class="section-sub">Diseñado para empresas con personal rotativo: salud, seguridad, logística y más.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon"><i class="ti ti-calendar-event"></i></div><div class="feature-title">Asignación automatizada</div><div class="feature-desc">Genera turnos equilibrados respetando disponibilidad, contratos y reglas de tu empresa.</div></div>
+    <div class="feature-card"><div class="feature-icon"><i class="ti ti-users"></i></div><div class="feature-title">Gestión de equipos</div><div class="feature-desc">Administra cargos, contratos y roles de cada colaborador desde un panel centralizado.</div></div>
+    <div class="feature-card"><div class="feature-icon"><i class="ti ti-coin"></i></div><div class="feature-title">Control financiero</div><div class="feature-desc">Calcula costos por turno, proyecta gastos y genera reportes de nómina automáticamente.</div></div>
+    <div class="feature-card"><div class="feature-icon"><i class="ti ti-bell"></i></div><div class="feature-title">Notificaciones en tiempo real</div><div class="feature-desc">Alertas automáticas ante cambios, ausencias o conflictos de turno.</div></div>
+    <div class="feature-card"><div class="feature-icon"><i class="ti ti-chart-bar"></i></div><div class="feature-title">Reportes y analítica</div><div class="feature-desc">Dashboards con KPIs de asistencia, productividad y costos para decisiones informadas.</div></div>
+    <div class="feature-card"><div class="feature-icon"><i class="ti ti-building"></i></div><div class="feature-title">Multi-sucursal</div><div class="feature-desc">Gestiona varias sedes desde una sola cuenta con permisos y vistas por unidad.</div></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="pricing-header">
+    <div class="section-label">Precios</div>
+    <h2>Planes que crecen<br>con tu equipo</h2>
+    <p class="section-sub">Paga por licencias activas. Sin costos ocultos ni contratos de largo plazo.</p>
+  </div>
+  <div class="billing-toggle">
+    <span class="toggle-label active" id="lbl-monthly">Mensual</span>
+    <button class="toggle-pill-btn" onclick="toggleBilling()" aria-label="Cambiar ciclo de facturación">
+      <div class="toggle-thumb" id="toggle-thumb"></div>
+    </button>
+    <span class="toggle-label" id="lbl-annual">Anual</span>
+    <span class="badge-save">Ahorra 20%</span>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-name">Básico</div>
+      <div class="plan-price" id="price-basic">$X.XXX<sub> CLP</sub></div>
+      <div class="plan-period">por licencia / mes</div>
+      <div class="plan-licenses">Hasta 15 licencias</div>
+      <ul class="plan-features">
+        <li><i class="ti ti-check"></i> Asignación de turnos</li>
+        <li><i class="ti ti-check"></i> Gestión de personal</li>
+        <li><i class="ti ti-check"></i> Reportes básicos</li>
+        <li><i class="ti ti-check"></i> 1 sucursal</li>
+        <li class="disabled"><i class="ti ti-x"></i> Control financiero</li>
+        <li class="disabled"><i class="ti ti-x"></i> Multi-sucursal</li>
+      </ul>
+      <a class="plan-btn plan-btn-outline" href="#contact">Comenzar gratis</a>
+    </div>
+    <div class="plan-card featured">
+      <div class="featured-badge">Más popular</div>
+      <div class="plan-name">Profesional</div>
+      <div class="plan-price" id="price-pro">$X.XXX<sub> CLP</sub></div>
+      <div class="plan-period">por licencia / mes</div>
+      <div class="plan-licenses">Hasta 50 licencias</div>
+      <ul class="plan-features">
+        <li><i class="ti ti-check"></i> Todo lo del plan Básico</li>
+        <li><i class="ti ti-check"></i> Control financiero</li>
+        <li><i class="ti ti-check"></i> Reportes avanzados</li>
+        <li><i class="ti ti-check"></i> Hasta 3 sucursales</li>
+        <li><i class="ti ti-check"></i> Soporte prioritario</li>
+        <li class="disabled"><i class="ti ti-x"></i> API + integraciones</li>
+      </ul>
+      <a class="plan-btn plan-btn-solid" href="#contact">Solicitar demo</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price">Cotización<sub> personalizada</sub></div>
+      <div class="plan-period">según volumen</div>
+      <div class="plan-licenses">Licencias ilimitadas</div>
+      <ul class="plan-features">
+        <li><i class="ti ti-check"></i> Todo lo del plan Pro</li>
+        <li><i class="ti ti-check"></i> API + integraciones</li>
+        <li><i class="ti ti-check"></i> SSO / LDAP</li>
+        <li><i class="ti ti-check"></i> Multi-sucursal ilimitado</li>
+        <li><i class="ti ti-check"></i> SLA garantizado</li>
+        <li><i class="ti ti-check"></i> Onboarding dedicado</li>
+      </ul>
+      <a class="plan-btn plan-btn-outline" href="#contact">Hablar con ventas</a>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-label">Testimonios</div>
+  <h2>Lo que dicen<br>nuestros clientes</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="testimonial-quote">"Antes tardábamos horas en armar los turnos de la semana. Con Asygna lo resolvemos en minutos y sin errores."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#E1F5EE; color:#0F6E56;">MA</div>
+        <div><div class="author-name">María Alvarado</div><div class="author-role">Jefa de RRHH · Clínica del Sur</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="testimonial-quote">"El control financiero por turno fue un game changer. Ahora tenemos visibilidad total del gasto de personal en tiempo real."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#E6F1FB; color:#185FA5;">RV</div>
+        <div><div class="author-name">Roberto Vargas</div><div class="author-role">CFO · Seguridad Andes SpA</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="testimonial-quote">"Gestionar tres sucursales desde una sola pantalla es increíble. El equipo de soporte responde rapidísimo."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#FAEEDA; color:#854F0B;">CL</div>
+        <div><div class="author-name">Claudia León</div><div class="author-role">Gerente Operaciones · LogiNorte</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="section-label">FAQ</div>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Qué es una licencia en Asygna?</span><i class="ti ti-chevron-down"></i></button>
+      <div class="faq-a">Una licencia corresponde a un usuario activo en la plataforma. Puedes agregar o quitar licencias en cualquier momento y solo pagas por las que usas ese mes.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Puedo cambiar de plan después de contratar?</span><i class="ti ti-chevron-down"></i></button>
+      <div class="faq-a">Sí. Puedes subir o bajar de plan en cualquier momento desde tu panel. Los cambios se aplican en el próximo ciclo de facturación.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Hay un período de prueba gratuito?</span><i class="ti ti-chevron-down"></i></button>
+      <div class="faq-a">Sí, ofrecemos 14 días de prueba gratuita sin requerir tarjeta de crédito. Tendrás acceso completo al plan Profesional durante ese período.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Con qué sistemas se puede integrar?</span><i class="ti ti-chevron-down"></i></button>
+      <div class="faq-a">El plan Enterprise incluye acceso a nuestra API REST para conectar con sistemas de nómina, ERP y otros softwares de gestión.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Dónde están alojados mis datos?</span><i class="ti ti-chevron-down"></i></button>
+      <div class="faq-a">Todos los datos se alojan en servidores con altos estándares de seguridad. Puedes solicitar nuestra política de privacidad en cualquier momento.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Contacto</div>
+    <h2>¿Listo para empezar?</h2>
+    <p class="section-sub">Cuéntanos sobre tu empresa y te contactaremos en menos de 24 horas.</p>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Nombre</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="form-group"><label class="form-label">Apellido</label><input type="text" placeholder="Tu apellido"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Correo corporativo</label><input type="email" placeholder="nombre@empresa.cl"></div>
+      <div class="form-group"><label class="form-label">Empresa</label><input type="text" placeholder="Nombre de tu organización"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Industria</label>
+          <select>
+            <option value="">Seleccionar...</option>
+            <option>Salud</option><option>Seguridad</option><option>Logística</option>
+            <option>Minería</option><option>Gastronomía</option><option>Retail</option>
+            <option>Construcción</option><option>Limpieza</option><option>Otra</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">N° de colaboradores</label>
+          <select>
+            <option value="">Seleccionar...</option>
+            <option>1 – 15</option><option>16 – 50</option><option>51 – 200</option><option>+200</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Mensaje (opcional)</label><textarea placeholder="Cuéntanos más sobre tus necesidades..."></textarea></div>
+      <button class="form-submit">Solicitar demo gratuita</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="footer-logo" href="#">asy<span>g</span>na</a>
+  <div class="footer-copy">© 2026 Asygna · asygna.cl</div>
+</footer>
+
+<script>
+  const industries = [
+    { id:'salud', label:'Salud', icon:'ti-stethoscope', heroWord:'guardias y pabellones.', sub:'Gestiona turnos de enfermeras, técnicos y médicos cumpliendo normativas de descanso y cobertura mínima por turno.', previewIcon:'ti-stethoscope', previewTitle:'Cobertura garantizada en clínicas y hospitales', previewDesc:'Control de turnos 4x4, guardias de urgencia, descansos compensatorios y alertas de dotación mínima por servicio.', badge:'Salud' },
+    { id:'seguridad', label:'Seguridad', icon:'ti-shield-check', heroWord:'rondas y relevos.', sub:'Organiza guardias, relevos y puntos de cobertura para empresas de seguridad privada con múltiples clientes y sitios.', previewIcon:'ti-shield-check', previewTitle:'Planificación de guardias y sitios de cobertura', previewDesc:'Asignación por sitio, control de relevos, registro de rondas y reportes de incidencias por turno.', badge:'Seguridad' },
+    { id:'mineria', label:'Minería', icon:'ti-pickaxe', heroWord:'faenas y rotaciones.', sub:'Administra esquemas de rotación 7x7, 14x7 o personalizados con control de fatiga, traslados y faenas en terreno.', previewIcon:'ti-pickaxe', previewTitle:'Rotaciones complejas en faenas mineras', previewDesc:'Soporte para esquemas 7x7 y 14x7, control de horas de fatiga, gestión de traslados y costos de faena.', badge:'Minería' },
+    { id:'gastronomia', label:'Gastronomía', icon:'ti-tools-kitchen-2', heroWord:'cocina y servicio.', sub:'Coordina brigadas de cocina, mozos y baristas considerando afluencia, eventos y temporada alta sin fricciones.', previewIcon:'ti-tools-kitchen-2', previewTitle:'Brigadas de cocina y sala coordinadas', previewDesc:'Turnos variables por día, gestión de part-time, control de horas extra y planificación para eventos especiales.', badge:'Gastro' },
+    { id:'logistica', label:'Logística', icon:'ti-truck', heroWord:'flotas y bodegas.', sub:'Sincroniza turnos de conductores, operadores de bodega y despachadores respetando tiempos de descanso legales.', previewIcon:'ti-truck', previewTitle:'Coordinación de conductores y operadores de bodega', previewDesc:'Control de jornadas de conducción, descansos obligatorios, asignación por ruta y reportes de productividad.', badge:'Logística' },
+    { id:'limpieza', label:'Limpieza', icon:'ti-sparkles', heroWord:'cuadrillas y contratos.', sub:'Organiza cuadrillas por cliente y edificio, controla asistencia en terreno y gestiona reemplazos de última hora.', previewIcon:'ti-sparkles', previewTitle:'Gestión de cuadrillas por cliente y edificio', previewDesc:'Asignación por sitio, control de check-in en terreno, reemplazos automáticos y costos por contrato.', badge:'Limpieza' },
+    { id:'construccion', label:'Construcción', icon:'ti-building-factory-2', heroWord:'obras y cuadrillas.', sub:'Coordina maestros, operadores y subcontratistas por obra con control de avance, horas y costos en tiempo real.', previewIcon:'ti-building-factory-2', previewTitle:'Control de personal por obra y frente de trabajo', previewDesc:'Turnos por obra, control de subcontratistas, registro de horas por partida y proyección de costo de mano de obra.', badge:'Construcción' }
+  ];
+
+  let activeId = null;
+
+  function renderPills() {
+    const container = document.getElementById('pills-container');
+    industries.forEach(ind => {
+      const pill = document.createElement('button');
+      pill.className = 'pill';
+      pill.id = 'pill-' + ind.id;
+      pill.innerHTML = '<i class="ti ' + ind.icon + '"></i>' + ind.label;
+      pill.onclick = () => selectIndustry(ind.id);
+      container.appendChild(pill);
+    });
+  }
+
+  function selectIndustry(id) {
+    const ind = industries.find(i => i.id === id);
+    if (!ind) return;
+    if (activeId === id) {
+      activeId = null;
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      document.getElementById('hero-industry').textContent = 'caos.';
+      document.getElementById('hero-sub').textContent = 'Asygna simplifica la planificación de equipos rotativos y la gestión financiera de tu organización, desde una sola plataforma.';
+      document.querySelector('#industry-preview .preview-icon i').className = 'ti ti-layout-grid';
+      document.getElementById('preview-title').textContent = 'Selecciona un rubro para ver cómo Asygna se adapta';
+      document.getElementById('preview-desc').textContent = 'Cada industria tiene sus propios desafíos de turno. Asygna viene preconfigurado para los más comunes.';
+      document.getElementById('preview-badge').style.visibility = 'hidden';
+      return;
+    }
+    activeId = id;
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    document.getElementById('pill-' + id).classList.add('active');
+    const heroEl = document.getElementById('hero-industry');
+    heroEl.style.opacity = '0';
+    setTimeout(() => { heroEl.textContent = ind.heroWord; heroEl.style.opacity = '1'; }, 150);
+    const subEl = document.getElementById('hero-sub');
+    subEl.style.opacity = '0';
+    setTimeout(() => { subEl.textContent = ind.sub; subEl.style.opacity = '1'; }, 180);
+    const prev = document.getElementById('industry-preview');
+    prev.classList.remove('fade'); void prev.offsetWidth; prev.classList.add('fade');
+    prev.querySelector('.preview-icon i').className = 'ti ' + ind.previewIcon;
+    document.getElementById('preview-title').textContent = ind.previewTitle;
+    document.getElementById('preview-desc').textContent = ind.previewDesc;
+    const badge = document.getElementById('preview-badge');
+    badge.textContent = ind.badge;
+    badge.style.visibility = 'visible';
+  }
+
+  let isAnnual = false;
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    document.getElementById('toggle-thumb').className = 'toggle-thumb' + (isAnnual ? ' annual' : '');
+    document.getElementById('lbl-monthly').className = 'toggle-label' + (isAnnual ? '' : ' active');
+    document.getElementById('lbl-annual').className = 'toggle-label' + (isAnnual ? ' active' : '');
+  }
+
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+    if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+  }
+
+  renderPills();
+</script>
+</body>
+</html>
