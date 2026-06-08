@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asygna · Gestión de turnos inteligente</title>
   <meta name="description" content="Asygna simplifica la planificación de equipos rotativos y la gestión financiera de tu organización, desde una sola plataforma.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap&subset=latin,latin-ext" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -34,8 +34,8 @@
       padding: 1.25rem 2.5rem; border-bottom: 0.5px solid var(--border);
       position: sticky; top: 0; background: var(--surface); z-index: 100;
     }
-    .nav-logo { font-family: var(--serif); font-size: 22px; color: var(--text-primary); letter-spacing: -0.5px; text-decoration: none; }
-    .nav-logo span { color: var(--brand); }
+    .nav-logo { text-decoration: none; display: inline-flex; align-items: center; }
+    .nav-logo canvas { display: block; }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a { font-size: 14px; color: var(--text-secondary); text-decoration: none; font-weight: 400; }
     .nav-links a:hover { color: var(--text-primary); }
@@ -181,6 +181,73 @@
     .fade { animation: fadeIn 0.25s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* HOVER CARDS */
+    .feature-card { transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); position: relative; z-index: 1; }
+    .feature-icon { transition: background 0.3s ease; }
+    .feature-icon i { transition: color 0.3s ease; }
+    .feature-card:hover .feature-icon { background: var(--brand); }
+    .feature-card:hover .feature-icon i { color: #fff; }
+
+    .plan-card { transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease; }
+    .plan-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+    .plan-card.featured:hover { box-shadow: 0 16px 40px rgba(29,158,117,0.18); }
+
+    .testimonial-card { transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease; }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+
+    /* HOVER BOTONES */
+    .btn-primary { transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; }
+    .btn-primary:hover { background: var(--brand-mid); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(29,158,117,0.3); }
+    .btn-ghost { transition: background 0.25s ease, transform 0.2s ease; }
+    .btn-ghost:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .nav-cta { transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; }
+    .nav-cta:hover { background: var(--brand-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(29,158,117,0.25); }
+    .plan-btn-solid { transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; }
+    .plan-btn-solid:hover { background: var(--brand-mid); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(29,158,117,0.28); }
+    .plan-btn-outline { transition: background 0.25s ease, transform 0.2s ease; }
+    .plan-btn-outline:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .form-submit { transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease; }
+    .form-submit:hover { background: var(--brand-mid); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(29,158,117,0.3); }
+
+    /* PATRON HERO */
+    .hero-wrap { position: relative; overflow: hidden; }
+    .hero-wrap::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(29,158,117,0.065) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; z-index: 0; }
+    .hero-wrap > * { position: relative; z-index: 1; }
+
+    /* NAV scroll shadow */
+    nav { transition: box-shadow 0.3s ease; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+
+    /* STAT hover */
+    .stat-item { transition: background 0.3s ease; }
+    .stat-item:hover { background: var(--surface-2); }
+
+    /* PILL hover */
+    .pill { transition: all 0.2s cubic-bezier(.22,1,.36,1); }
+    .pill:hover { transform: translateY(-1px); }
+
+
+
+    /* SVG icons inline */
+    .feature-icon svg { color: var(--brand-mid); }
+    .feature-card:hover .feature-icon svg { color: #fff; }
+    .plan-features li svg { color: var(--brand); flex-shrink: 0; margin-top: 2px; }
+    .plan-features li.disabled svg { color: #ccc; }
+    .faq-q svg { color: var(--text-secondary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-q.open svg { transform: rotate(180deg); }
+    .preview-icon svg { color: var(--brand-mid); }
+    .pill svg { width: 14px; height: 14px; }
+    .stars svg { display: inline; }
+    .nav-links a { display: inline-flex; align-items: center; }
+    /* SCROLL REVEAL puro */
+    .sr { opacity: 0; transform: translateY(22px); transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
+    .sr-d1 { transition-delay: 0.1s; }
+    .sr-d2 { transition-delay: 0.2s; }
+    .sr-d3 { transition-delay: 0.3s; }
+    .sr-d4 { transition-delay: 0.4s; }
+    .sr-d5 { transition-delay: 0.5s; }
+    .sr-visible { opacity: 1 !important; transform: translateY(0) !important; }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .stats { grid-template-columns: 1fr 1fr; }
@@ -197,7 +264,9 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">asy<span>g</span>na</a>
+  <a class="nav-logo" href="#" id="nav-logo-wrap">
+    <span id="nav-logo-text" style="font-family:'DM Sans',sans-serif;font-size:36px;font-weight:300;letter-spacing:-1px;white-space:nowrap;line-height:1.6;color:var(--text-primary);position:relative;display:inline-block;">asy<span id="nav-g-slot" style="visibility:hidden;letter-spacing:6px;">g</span>na<canvas id="nav-g-canvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas></span>
+  </a>
   <div class="nav-links">
     <a href="#features">Funciones</a>
     <a href="#pricing">Precios</a>
@@ -226,7 +295,7 @@
 
   <div class="preview-wrap">
     <div class="industry-preview" id="industry-preview">
-      <div class="preview-icon"><i class="ti ti-layout-grid"></i></div>
+      <div class="preview-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
       <div class="preview-text">
         <div class="preview-title" id="preview-title">Selecciona un rubro para ver cómo Asygna se adapta</div>
         <div class="preview-desc" id="preview-desc">Cada industria tiene sus propios desafíos de turno. Asygna viene preconfigurado para los más comunes.</div>
@@ -236,7 +305,7 @@
   </div>
 </div>
 
-<div class="stats">
+<div class="stats sr">
   <div class="stat-item"><div class="stat-num">+<span>12k</span></div><div class="stat-label">Turnos asignados</div></div>
   <div class="stat-item"><div class="stat-num"><span>98</span>%</div><div class="stat-label">Satisfacción de clientes</div></div>
   <div class="stat-item"><div class="stat-num">-<span>60</span>%</div><div class="stat-label">Tiempo en planificación</div></div>
@@ -244,23 +313,23 @@
 </div>
 
 <section id="features">
-  <div class="features-header">
+  <div class="features-header sr">
     <div class="section-label">Funciones</div>
     <h2>Todo lo que necesitas<br>en un solo lugar</h2>
     <p class="section-sub">Diseñado para empresas con personal rotativo: salud, seguridad, logística y más.</p>
   </div>
   <div class="features-grid">
-    <div class="feature-card"><div class="feature-icon"><i class="ti ti-calendar-event"></i></div><div class="feature-title">Asignación automatizada</div><div class="feature-desc">Genera turnos equilibrados respetando disponibilidad, contratos y reglas de tu empresa.</div></div>
-    <div class="feature-card"><div class="feature-icon"><i class="ti ti-users"></i></div><div class="feature-title">Gestión de equipos</div><div class="feature-desc">Administra cargos, contratos y roles de cada colaborador desde un panel centralizado.</div></div>
-    <div class="feature-card"><div class="feature-icon"><i class="ti ti-coin"></i></div><div class="feature-title">Control financiero</div><div class="feature-desc">Calcula costos por turno, proyecta gastos y genera reportes de nómina automáticamente.</div></div>
-    <div class="feature-card"><div class="feature-icon"><i class="ti ti-bell"></i></div><div class="feature-title">Notificaciones en tiempo real</div><div class="feature-desc">Alertas automáticas ante cambios, ausencias o conflictos de turno.</div></div>
-    <div class="feature-card"><div class="feature-icon"><i class="ti ti-chart-bar"></i></div><div class="feature-title">Reportes y analítica</div><div class="feature-desc">Dashboards con KPIs de asistencia, productividad y costos para decisiones informadas.</div></div>
-    <div class="feature-card"><div class="feature-icon"><i class="ti ti-building"></i></div><div class="feature-title">Multi-sucursal</div><div class="feature-desc">Gestiona varias sedes desde una sola cuenta con permisos y vistas por unidad.</div></div>
+    <div class="feature-card sr"><div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="4" y1="11" x2="20" y2="11"/><rect x="8" y="15" width="2" height="2"/></svg></div><div class="feature-title">Asignación automatizada</div><div class="feature-desc">Genera turnos equilibrados respetando disponibilidad, contratos y reglas de tu empresa.</div></div>
+    <div class="feature-card sr sr-d1"><div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg></div><div class="feature-title">Gestión de equipos</div><div class="feature-desc">Administra cargos, contratos y roles de cada colaborador desde un panel centralizado.</div></div>
+    <div class="feature-card sr sr-d2"><div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg></div><div class="feature-title">Control financiero</div><div class="feature-desc">Calcula costos por turno, proyecta gastos y genera reportes de nómina automáticamente.</div></div>
+    <div class="feature-card sr"><div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div class="feature-title">Notificaciones en tiempo real</div><div class="feature-desc">Alertas automáticas ante cambios, ausencias o conflictos de turno.</div></div>
+    <div class="feature-card sr sr-d1"><div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="9"/><rect x="9.5" y="7" width="4" height="14"/><rect x="16" y="3" width="4" height="18"/><line x1="3" y1="21" x2="20" y2="21"/></svg></div><div class="feature-title">Reportes y analítica</div><div class="feature-desc">Dashboards con KPIs de asistencia, productividad y costos para decisiones informadas.</div></div>
+    <div class="feature-card sr sr-d2"><div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 21V9h6v12"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></div><div class="feature-title">Multi-sucursal</div><div class="feature-desc">Gestiona varias sedes desde una sola cuenta con permisos y vistas por unidad.</div></div>
   </div>
 </section>
 
 <section id="pricing">
-  <div class="pricing-header">
+  <div class="pricing-header sr">
     <div class="section-label">Precios</div>
     <h2>Planes que crecen<br>con tu equipo</h2>
     <p class="section-sub">Paga por licencias activas. Sin costos ocultos ni contratos de largo plazo.</p>
@@ -274,49 +343,49 @@
     <span class="badge-save">Ahorra 20%</span>
   </div>
   <div class="plans-grid">
-    <div class="plan-card">
+    <div class="plan-card sr">
       <div class="plan-name">Básico</div>
       <div class="plan-price" id="price-basic">$X.XXX<sub> CLP</sub></div>
       <div class="plan-period">por licencia / mes</div>
       <div class="plan-licenses">Hasta 15 licencias</div>
       <ul class="plan-features">
-        <li><i class="ti ti-check"></i> Asignación de turnos</li>
-        <li><i class="ti ti-check"></i> Gestión de personal</li>
-        <li><i class="ti ti-check"></i> Reportes básicos</li>
-        <li><i class="ti ti-check"></i> 1 sucursal</li>
-        <li class="disabled"><i class="ti ti-x"></i> Control financiero</li>
-        <li class="disabled"><i class="ti ti-x"></i> Multi-sucursal</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Asignación de turnos</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Gestión de personal</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Reportes básicos</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 sucursal</li>
+        <li class="disabled"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Control financiero</li>
+        <li class="disabled"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Multi-sucursal</li>
       </ul>
       <a class="plan-btn plan-btn-outline" href="#contact">Comenzar gratis</a>
     </div>
-    <div class="plan-card featured">
+    <div class="plan-card featured sr sr-d1">
       <div class="featured-badge">Más popular</div>
       <div class="plan-name">Profesional</div>
       <div class="plan-price" id="price-pro">$X.XXX<sub> CLP</sub></div>
       <div class="plan-period">por licencia / mes</div>
       <div class="plan-licenses">Hasta 50 licencias</div>
       <ul class="plan-features">
-        <li><i class="ti ti-check"></i> Todo lo del plan Básico</li>
-        <li><i class="ti ti-check"></i> Control financiero</li>
-        <li><i class="ti ti-check"></i> Reportes avanzados</li>
-        <li><i class="ti ti-check"></i> Hasta 3 sucursales</li>
-        <li><i class="ti ti-check"></i> Soporte prioritario</li>
-        <li class="disabled"><i class="ti ti-x"></i> API + integraciones</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Todo lo del plan Básico</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Control financiero</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Reportes avanzados</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Hasta 3 sucursales</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Soporte prioritario</li>
+        <li class="disabled"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> API + integraciones</li>
       </ul>
       <a class="plan-btn plan-btn-solid" href="#contact">Solicitar demo</a>
     </div>
-    <div class="plan-card">
+    <div class="plan-card sr sr-d2">
       <div class="plan-name">Enterprise</div>
       <div class="plan-price">Cotización<sub> personalizada</sub></div>
       <div class="plan-period">según volumen</div>
       <div class="plan-licenses">Licencias ilimitadas</div>
       <ul class="plan-features">
-        <li><i class="ti ti-check"></i> Todo lo del plan Pro</li>
-        <li><i class="ti ti-check"></i> API + integraciones</li>
-        <li><i class="ti ti-check"></i> SSO / LDAP</li>
-        <li><i class="ti ti-check"></i> Multi-sucursal ilimitado</li>
-        <li><i class="ti ti-check"></i> SLA garantizado</li>
-        <li><i class="ti ti-check"></i> Onboarding dedicado</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Todo lo del plan Pro</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> API + integraciones</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> SSO / LDAP</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Multi-sucursal ilimitado</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> SLA garantizado</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Onboarding dedicado</li>
       </ul>
       <a class="plan-btn plan-btn-outline" href="#contact">Hablar con ventas</a>
     </div>
@@ -328,7 +397,7 @@
   <h2>Lo que dicen<br>nuestros clientes</h2>
   <div class="testimonials-grid">
     <div class="testimonial-card">
-      <div class="stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="testimonial-quote">"Antes tardábamos horas en armar los turnos de la semana. Con Asygna lo resolvemos en minutos y sin errores."</p>
       <div class="testimonial-author">
         <div class="author-avatar" style="background:#E1F5EE; color:#0F6E56;">MA</div>
@@ -336,7 +405,7 @@
       </div>
     </div>
     <div class="testimonial-card">
-      <div class="stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="testimonial-quote">"El control financiero por turno fue un game changer. Ahora tenemos visibilidad total del gasto de personal en tiempo real."</p>
       <div class="testimonial-author">
         <div class="author-avatar" style="background:#E6F1FB; color:#185FA5;">RV</div>
@@ -344,7 +413,7 @@
       </div>
     </div>
     <div class="testimonial-card">
-      <div class="stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#EF9F27" stroke="#EF9F27" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="testimonial-quote">"Gestionar tres sucursales desde una sola pantalla es increíble. El equipo de soporte responde rapidísimo."</p>
       <div class="testimonial-author">
         <div class="author-avatar" style="background:#FAEEDA; color:#854F0B;">CL</div>
@@ -355,36 +424,36 @@
 </section>
 
 <section id="faq">
-  <div class="faq-inner">
+  <div class="faq-inner sr">
     <div class="faq-header">
       <div class="section-label">FAQ</div>
       <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Qué es una licencia en Asygna?</span><i class="ti ti-chevron-down"></i></button>
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Qué es una licencia en Asygna?</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a">Una licencia corresponde a un usuario activo en la plataforma. Puedes agregar o quitar licencias en cualquier momento y solo pagas por las que usas ese mes.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Puedo cambiar de plan después de contratar?</span><i class="ti ti-chevron-down"></i></button>
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Puedo cambiar de plan después de contratar?</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a">Sí. Puedes subir o bajar de plan en cualquier momento desde tu panel. Los cambios se aplican en el próximo ciclo de facturación.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Hay un período de prueba gratuito?</span><i class="ti ti-chevron-down"></i></button>
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Hay un período de prueba gratuito?</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a">Sí, ofrecemos 14 días de prueba gratuita sin requerir tarjeta de crédito. Tendrás acceso completo al plan Profesional durante ese período.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Con qué sistemas se puede integrar?</span><i class="ti ti-chevron-down"></i></button>
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Con qué sistemas se puede integrar?</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a">El plan Enterprise incluye acceso a nuestra API REST para conectar con sistemas de nómina, ERP y otros softwares de gestión.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Dónde están alojados mis datos?</span><i class="ti ti-chevron-down"></i></button>
+      <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Dónde están alojados mis datos?</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
       <div class="faq-a">Todos los datos se alojan en servidores con altos estándares de seguridad. Puedes solicitar nuestra política de privacidad en cualquier momento.</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="contact-inner">
+  <div class="contact-inner sr">
     <div class="section-label">Contacto</div>
     <h2>¿Listo para empezar?</h2>
     <p class="section-sub">Cuéntanos sobre tu empresa y te contactaremos en menos de 24 horas.</p>
@@ -420,7 +489,9 @@
 </section>
 
 <footer>
-  <a class="footer-logo" href="#">asy<span>g</span>na</a>
+  <a class="footer-logo" href="#" id="footer-logo-wrap">
+    <span id="footer-logo-text" style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:300;letter-spacing:-1px;white-space:nowrap;line-height:1.5;color:var(--text-primary);position:relative;display:inline-block;">asy<span id="footer-g-slot" style="visibility:hidden;letter-spacing:6px;">g</span>na<canvas id="footer-g-canvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas></span>
+  </a>
   <div class="footer-copy">© 2026 Asygna · asygna.cl</div>
 </footer>
 
@@ -443,7 +514,7 @@
       const pill = document.createElement('button');
       pill.className = 'pill';
       pill.id = 'pill-' + ind.id;
-      pill.innerHTML = '<i class="ti ' + ind.icon + '"></i>' + ind.label;
+      pill.innerHTML = ind.label;
       pill.onclick = () => selectIndustry(ind.id);
       container.appendChild(pill);
     });
@@ -498,6 +569,87 @@
   }
 
   renderPills();
+</script>
+<script>
+function drawAsygnaLogo(canvasEl, outerEl, slotEl, textColor) {
+  const dpr = window.devicePixelRatio || 1;
+  const oR  = outerEl.getBoundingClientRect();
+  const gR  = slotEl.getBoundingClientRect();
+  canvasEl.width  = oR.width  * dpr;
+  canvasEl.height = oR.height * dpr;
+  canvasEl.style.width  = oR.width  + 'px';
+  canvasEl.style.height = oR.height + 'px';
+  const ctx = canvasEl.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, oR.width, oR.height);
+  const gx = gR.left - oR.left;
+  const gy = gR.top  - oR.top;
+  const gw = gR.width;
+  const gh = gR.height;
+  const r  = gw * 0.46;
+  const sw = r  * 0.30;
+  const cx = gx + gw * 0.50;
+  const cy = gy + gh * 0.52;
+  const green = '#1D9E75';
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = green;
+  ctx.lineWidth = sw;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx + r, cy);
+  ctx.bezierCurveTo(
+    cx + r + sw * 0.2, cy + gh * 0.36,
+    cx,                cy + gh * 0.54,
+    cx - gw * 0.22,    cy + gh * 0.42
+  );
+  ctx.stroke();
+  ctx.strokeStyle = textColor;
+  ctx.lineWidth = sw * 0.40;
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy - r * 0.58); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + r * 0.50, cy + r * 0.24); ctx.stroke();
+  ctx.fillStyle = green;
+  ctx.beginPath(); ctx.arc(cx, cy, sw * 0.46, 0, Math.PI * 2); ctx.fill();
+}
+
+function initLogos() {
+  drawAsygnaLogo(
+    document.getElementById('nav-g-canvas'),
+    document.getElementById('nav-logo-text'),
+    document.getElementById('nav-g-slot'),
+    '#1a1a1a'
+  );
+  drawAsygnaLogo(
+    document.getElementById('footer-g-canvas'),
+    document.getElementById('footer-logo-text'),
+    document.getElementById('footer-g-slot'),
+    '#1a1a1a'
+  );
+}
+
+document.fonts ? document.fonts.ready.then(initLogos) : setTimeout(initLogos, 600);
+window.addEventListener('resize', initLogos);
+</script>
+
+<script>
+  window.addEventListener('scroll', function() {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Scroll reveal con IntersectionObserver puro — sin librerías
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('sr-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.sr').forEach(function(el) {
+    observer.observe(el);
+  });
 </script>
 </body>
 </html>
