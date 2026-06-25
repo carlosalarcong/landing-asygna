@@ -566,13 +566,13 @@
 
 <script>
 var industries = [
-  {id:'salud',label:'Salud',heroWord:'guardias y pabellones.',sub:'Gestiona turnos de enfermeras, técnicos y médicos cumpliendo normativas de descanso y cobertura mínima por turno.',previewTitle:'Cobertura garantizada en clínicas y hospitales',previewDesc:'Control de turnos 4x4, guardias de urgencia, descansos compensatorios y alertas de dotación mínima por servicio.',badge:'Salud'},
-  {id:'seguridad',label:'Seguridad',heroWord:'rondas y relevos.',sub:'Organiza guardias, relevos y puntos de cobertura para empresas de seguridad privada con múltiples clientes y sitios.',previewTitle:'Planificación de guardias y sitios de cobertura',previewDesc:'Asignación por sitio, control de relevos, registro de rondas y reportes de incidencias por turno.',badge:'Seguridad'},
-  {id:'mineria',label:'Minería',heroWord:'faenas y rotaciones.',sub:'Administra esquemas de rotación 7x7, 14x7 o personalizados con control de fatiga, traslados y faenas en terreno.',previewTitle:'Rotaciones complejas en faenas mineras',previewDesc:'Soporte para esquemas 7x7 y 14x7, control de horas de fatiga, gestión de traslados y costos de faena.',badge:'Minería'},
-  {id:'gastronomia',label:'Gastronomía',heroWord:'cocina y servicio.',sub:'Coordina brigadas de cocina, mozos y baristas considerando afluencia, eventos y temporada alta sin fricciones.',previewTitle:'Brigadas de cocina y sala coordinadas',previewDesc:'Turnos variables por día, gestión de part-time, control de horas extra y planificación para eventos especiales.',badge:'Gastro'},
-  {id:'logistica',label:'Logística',heroWord:'flotas y bodegas.',sub:'Sincroniza turnos de conductores, operadores de bodega y despachadores respetando tiempos de descanso legales.',previewTitle:'Coordinación de conductores y operadores de bodega',previewDesc:'Control de jornadas de conducción, descansos obligatorios, asignación por ruta y reportes de productividad.',badge:'Logística'},
-  {id:'limpieza',label:'Limpieza',heroWord:'cuadrillas y contratos.',sub:'Organiza cuadrillas por cliente y edificio, controla asistencia en terreno y gestiona reemplazos de última hora.',previewTitle:'Gestión de cuadrillas por cliente y edificio',previewDesc:'Asignación por sitio, control de check-in en terreno, reemplazos automáticos y costos por contrato.',badge:'Limpieza'},
-  {id:'construccion',label:'Construcción',heroWord:'obras y cuadrillas.',sub:'Coordina maestros, operadores y subcontratistas por obra con control de avance, horas y costos en tiempo real.',previewTitle:'Control de personal por obra y frente de trabajo',previewDesc:'Turnos por obra, control de subcontratistas, registro de horas por partida y proyección de costo de mano de obra.',badge:'Construcción'}
+  {id:'salud',label:'Salud',heroWord:'caos de turnos.',sub:'Gestiona turnos de enfermeras, técnicos y médicos cumpliendo normativas de descanso y cobertura mínima por turno.',previewTitle:'Cobertura garantizada en clínicas y hospitales',previewDesc:'Control de turnos 4x4, guardias de urgencia, descansos compensatorios y alertas de dotación mínima por servicio.',badge:'Salud'},
+  {id:'seguridad',label:'Seguridad',heroWord:'descontrol de rondas.',sub:'Organiza guardias, relevos y puntos de cobertura para empresas de seguridad privada con múltiples clientes y sitios.',previewTitle:'Planificación de guardias y sitios de cobertura',previewDesc:'Asignación por sitio, control de relevos, registro de rondas y reportes de incidencias por turno.',badge:'Seguridad'},
+  {id:'mineria',label:'Minería',heroWord:'desorden de faenas.',sub:'Administra esquemas de rotación 7x7, 14x7 o personalizados con control de fatiga, traslados y faenas en terreno.',previewTitle:'Rotaciones complejas en faenas mineras',previewDesc:'Soporte para esquemas 7x7 y 14x7, control de horas de fatiga, gestión de traslados y costos de faena.',badge:'Minería'},
+  {id:'gastronomia',label:'Gastronomía',heroWord:'caos del servicio.',sub:'Coordina brigadas de cocina, mozos y baristas considerando afluencia, eventos y temporada alta sin fricciones.',previewTitle:'Brigadas de cocina y sala coordinadas',previewDesc:'Turnos variables por día, gestión de part-time, control de horas extra y planificación para eventos especiales.',badge:'Gastro'},
+  {id:'logistica',label:'Logística',heroWord:'desorden de la flota.',sub:'Sincroniza turnos de conductores, operadores de bodega y despachadores respetando tiempos de descanso legales.',previewTitle:'Coordinación de conductores y operadores de bodega',previewDesc:'Control de jornadas de conducción, descansos obligatorios, asignación por ruta y reportes de productividad.',badge:'Logística'},
+  {id:'limpieza',label:'Limpieza',heroWord:'descontrol de cuadrillas.',sub:'Organiza cuadrillas por cliente y edificio, controla asistencia en terreno y gestiona reemplazos de última hora.',previewTitle:'Gestión de cuadrillas por cliente y edificio',previewDesc:'Asignación por sitio, control de check-in en terreno, reemplazos automáticos y costos por contrato.',badge:'Limpieza'},
+  {id:'construccion',label:'Construcción',heroWord:'caos de la obra.',sub:'Coordina maestros, operadores y subcontratistas por obra con control de avance, horas y costos en tiempo real.',previewTitle:'Control de personal por obra y frente de trabajo',previewDesc:'Turnos por obra, control de subcontratistas, registro de horas por partida y proyección de costo de mano de obra.',badge:'Construcción'}
 ];
 
 var activeId = null;
@@ -687,7 +687,7 @@ var statsEl=document.querySelector('.stats');
 if(statsEl) statsObs.observe(statsEl);
 
 // Typing rotativo
-var words=['caos.','guardias.','faenas.','relevos.','cuadrillas.','cocina.','bodegas.'];
+var words=['caos.','desorden.','papeleo.','Excel.','estrés.'];
 var wi=0; var heroEm=document.getElementById('hero-industry'); var isTyping=false;
 function typeWord(word) {
   if(isTyping) return; isTyping=true; var i=0; heroEm.textContent='';
