@@ -33,6 +33,9 @@
     .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-login { font-size: 14px; color: var(--text-inverse-dim); text-decoration: none; font-weight: 400; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border-inverse); transition: all 0.2s; }
     .nav-login:hover { color: var(--text-inverse); background: rgba(255,255,255,0.06); }
+    .nav-demo { font-size: 14px; color: var(--brand-bright); text-decoration: none; font-weight: 500; padding: 8px 14px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
+    .nav-demo::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-bright); box-shadow: 0 0 6px rgba(43,200,147,0.8); animation: pulse 2s infinite; }
+    .nav-demo:hover { color: #fff; background: rgba(43,200,147,0.1); }
     .nav-cta { font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 9px 20px; border-radius: 8px; background: var(--brand); color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
     .nav-cta:hover { background: var(--brand-bright); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(43,200,147,0.35); }
 
@@ -280,6 +283,7 @@
     <a href="#contact">Acceso anticipado</a>
   </div>
   <div class="nav-right">
+    <a class="nav-demo" href="https://demo.asygna.cl" target="_blank" rel="noopener">Ver demo</a>
     <a class="nav-login" href="https://app.asygna.cl/login">Iniciar sesión</a>
     <a class="nav-cta" href="#contact">Unirme a la lista</a>
   </div>
@@ -292,7 +296,12 @@
     <p class="hero-sub" id="hero-sub">Asygna simplifica la planificación de equipos rotativos y la gestión financiera de tu organización, desde una sola plataforma. Sé de los primeros en probarla.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#contact">Asegurar mi cupo</a>
-      <a class="btn-ghost-dark" href="#how">Ver cómo funciona</a>
+      <a class="btn-ghost-dark" href="https://demo.asygna.cl" target="_blank" rel="noopener">
+        <span style="display:inline-flex;align-items:center;gap:8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          Probar demo en vivo
+        </span>
+      </a>
     </div>
     <p class="hero-note">Cupos limitados de lanzamiento · <strong>50% de descuento</strong> para founding members</p>
   </div>
@@ -561,7 +570,10 @@
 </footer>
 
 <div class="mobile-cta">
-  <a href="#contact">Reservar mi cupo gratis</a>
+  <div style="display:flex;gap:8px;">
+    <a href="https://demo.asygna.cl" target="_blank" rel="noopener" style="flex:0 0 auto;background:transparent;color:var(--brand);border:1px solid var(--brand);padding:14px 18px;">Demo</a>
+    <a href="#contact" style="flex:1;">Reservar mi cupo gratis</a>
+  </div>
 </div>
 
 <script>
