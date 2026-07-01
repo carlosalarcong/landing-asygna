@@ -536,22 +536,27 @@
     <h2>Asegura tu cupo<br>de founding member</h2>
     <p class="section-sub">Déjanos tus datos y te contactamos para reservar tu lugar con los beneficios de lanzamiento.</p>
     <div class="contact-card">
-      <div class="contact-form">
+      <div class="contact-form" id="contact-form">
+        <input type="hidden" name="access_key" value="c2ec01fe-72f5-439d-8c7a-2777e86e1159">
+        <input type="hidden" name="subject" value="Nuevo founding member — Asygna">
+        <input type="hidden" name="from_name" value="Landing Asygna">
+        <input type="checkbox" name="botcheck" style="display:none">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">Nombre</label><input type="text" placeholder="Tu nombre"></div>
-          <div class="form-group"><label class="form-label">Apellido</label><input type="text" placeholder="Tu apellido"></div>
+          <div class="form-group"><label class="form-label">Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
+          <div class="form-group"><label class="form-label">Apellido</label><input type="text" name="apellido" placeholder="Tu apellido" required></div>
         </div>
-        <div class="form-group"><label class="form-label">Correo corporativo</label><input type="email" placeholder="nombre@empresa.cl"></div>
+        <div class="form-group"><label class="form-label">Correo corporativo</label><input type="email" name="email" placeholder="nombre@empresa.cl" required></div>
         <div class="form-group">
           <label class="form-label">Industria</label>
-          <select>
+          <select name="industria">
             <option value="">Seleccionar...</option>
             <option>Salud</option><option>Seguridad</option><option>Logística</option>
             <option>Minería</option><option>Gastronomía</option><option>Retail</option>
             <option>Construcción</option><option>Limpieza</option><option>Otra</option>
           </select>
         </div>
-        <button class="form-submit">Reservar mi cupo gratis</button>
+        <button class="form-submit" id="form-btn" onclick="submitForm(event)">Reservar mi cupo gratis</button>
+        <div id="form-msg" style="display:none;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:500;margin-top:8px;"></div>
       </div>
       <div class="contact-trust">
         <div class="trust-item"><div class="trust-dot"></div>Sin compromiso</div>
@@ -650,6 +655,76 @@ function toggleFaq(btn) {
 }
 
 renderPills();
+
+// Formulario Web3Forms
+function submitForm(e) {
+  e.preventDefault();
+  var btn = document.getElementById('form-btn');
+  var msg = document.getElementById('form-msg');
+  var form = document.getElementById('contact-form');
+
+  var nombre = form.querySelector('[name="nombre"]').value.trim();
+  var email = form.querySelector('[name="email"]').value.trim();
+  if (!nombre || !email) {
+    msg.style.display = 'block';
+    msg.style.background = 'rgba(226,75,74,0.1)';
+    msg.style.color = '#A32D2D';
+    msg.textContent = 'Por favor completa nombre y correo.';
+    return;
+  }
+
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  var data = {
+    access_key: 'c2ec01fe-72f5-439d-8c7a-2777e86e1159',
+    subject: 'Nuevo founding member — Asygna',
+    from_name: 'Landing Asygna',
+    nombre: nombre,
+    apellido: form.querySelector('[name="apellido"]').value.trim(),
+    email: email,
+    industria: form.querySelector('[name="industria"]').value,
+    botcheck: ''
+  };
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(json) {
+    msg.style.display = 'block';
+    if (json.success) {
+      msg.style.background = 'rgba(29,158,117,0.1)';
+      msg.style.color = '#085041';
+      msg.textContent = '¡Listo! Te contactaremos pronto con los beneficios de founding member.';
+      form.querySelector('[name="nombre"]').value = '';
+      form.querySelector('[name="apellido"]').value = '';
+      form.querySelector('[name="email"]').value = '';
+      form.querySelector('[name="industria"]').value = '';
+      btn.textContent = 'Cupo reservado ✓';
+      btn.style.background = '#085041';
+    } else {
+      msg.style.background = 'rgba(226,75,74,0.1)';
+      msg.style.color = '#A32D2D';
+      msg.textContent = 'Hubo un error. Escríbenos a contacto@asygna.cl';
+      btn.textContent = 'Reservar mi cupo gratis';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+  })
+  .catch(function() {
+    msg.style.display = 'block';
+    msg.style.background = 'rgba(226,75,74,0.1)';
+    msg.style.color = '#A32D2D';
+    msg.textContent = 'Error de conexión. Escríbenos a contacto@asygna.cl';
+    btn.textContent = 'Reservar mi cupo gratis';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  });
+}
 
 // Nav border
 window.addEventListener('scroll', function() {
