@@ -232,8 +232,8 @@
     .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--brand); }
 
     /* ═══ MOBILE CTA ═══ */
-    .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; padding: 1rem 1.5rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-top: 1px solid var(--border); z-index: 99; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); }
-    .mobile-cta a { display: block; text-align: center; background: var(--brand); color: #fff; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 500; text-decoration: none; }
+
+
 
     /* ═══ FOOTER oscuro ═══ */
     footer { padding: 2.2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; background: var(--ink); }
@@ -246,7 +246,6 @@
     .sr-d3 { transition-delay: 0.3s; }
     .sr-visible { opacity: 1 !important; transform: translateY(0) !important; }
 
-    #hero-industry::after { content: '|'; color: var(--brand-bright); animation: blink 1s step-end infinite; margin-left: 2px; font-style: normal; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
     .fade { animation: fadeIn 0.25s ease; }
@@ -266,7 +265,7 @@
       .how-grid { grid-template-columns: 1fr; }
       .mockup-body { grid-template-columns: 1fr; }
       .mockup-sidebar { display: none; }
-      .mobile-cta { display: block; }
+
       body { padding-bottom: 80px; }
     }
 
@@ -325,12 +324,46 @@
 .trust-section{background:#eef8f4}.trust-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:center}.trust-lock{min-height:310px;border-radius:24px;background:radial-gradient(circle at 50% 42%,rgba(43,200,147,.18),transparent 46%),var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:22px;box-shadow:0 30px 80px rgba(7,18,14,.18)}.lock-ring{width:105px;height:105px;border-radius:50%;border:1px solid rgba(43,200,147,.45);box-shadow:0 0 0 18px rgba(43,200,147,.06),0 0 50px rgba(43,200,147,.22);display:grid;place-items:center;font-size:42px;color:var(--brand-bright)}
 .founding-invite{padding:7rem 2rem;background:var(--surface)}.founding-panel{max-width:1100px;margin:auto;border-radius:26px;padding:48px;background:linear-gradient(135deg,#07120e,#103c2d);color:white;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;box-shadow:0 35px 90px rgba(7,18,14,.2)}.founding-panel h2{color:white;margin:10px 0 16px}.founding-panel p{color:var(--text-inverse-dim);line-height:1.7}.founding-benefits{display:grid;gap:10px}.founding-benefits span{padding:12px 14px;border:1px solid var(--border-inverse);border-radius:10px;background:rgba(255,255,255,.04);font-size:14px}.founding-panel .btn-primary{grid-column:1/-1;justify-self:start}
 @media(max-width:800px){.context-flow,.implementation-track,.capabilities-layout,.trust-layout,.founding-panel{grid-template-columns:1fr}.implementation-step{border-right:0;border-bottom:1px solid var(--border)}.context-flow{grid-template-columns:1fr 1fr}.founding-panel{padding:30px}.operation-context,.implementation-section,.capabilities-section,.trust-section,.founding-invite{padding:5rem 1.2rem}.hero h1{font-size:clamp(38px,11vw,58px)}}
+
+/* Identidad Asygna: recursos dispersos que convergen en una operación coordinada */
+.asygna-logo{display:inline-flex;align-items:center;gap:10px;line-height:1;text-decoration:none}
+.asygna-mark{width:38px;height:38px;overflow:visible;flex:none}
+.asygna-wordmark{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:500;letter-spacing:-1.4px}
+.asygna-logo--dark .asygna-wordmark{color:#f4faf7}.asygna-logo--light .asygna-wordmark{color:#f4faf7}
+.mark-line{fill:none;stroke:rgba(43,200,147,.62);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:80;stroke-dashoffset:80;animation:markConnect .75s cubic-bezier(.22,1,.36,1) forwards}
+.mark-line-2{animation-delay:.12s}.mark-line-3{animation-delay:.2s}.mark-line-4{animation-delay:.3s}.mark-line-5{animation-delay:.38s}
+.mark-node{fill:#2bc893;transform-box:fill-box;transform-origin:center;opacity:0;animation:markNodeIn .55s cubic-bezier(.22,1,.36,1) forwards}
+.mark-node-center{fill:#f4faf7;stroke:#2bc893;stroke-width:2}
+.n1{animation-delay:.02s;transform:translate(-8px,-4px) scale(.4)}.n2{animation-delay:.08s;transform:translate(0,-10px) scale(.4)}.n3{animation-delay:.14s;transform:translate(8px,-4px) scale(.4)}.n4{animation-delay:.2s;transform:translate(-9px,7px) scale(.4)}.n5{animation-delay:.26s;transform:translate(9px,7px) scale(.4)}.mark-node-center{animation-delay:.42s;transform:scale(.3)}.n6{animation-delay:.34s;transform:translate(0,10px) scale(.4)}
+@keyframes markNodeIn{to{opacity:1;transform:translate(0,0) scale(1)}}
+@keyframes markConnect{to{stroke-dashoffset:0}}
+.nav-logo:hover .asygna-mark{filter:drop-shadow(0 0 8px rgba(43,200,147,.45))}
+.stage-brand .asygna-mark{width:27px;height:27px}.stage-brand .asygna-wordmark{font-size:18px;letter-spacing:-.7px}
+.stage-final-logo .asygna-logo{justify-content:center}.stage-final-logo .asygna-mark{width:72px;height:72px}.stage-final-logo .asygna-wordmark{font-size:58px;letter-spacing:-3px}
+footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20px;letter-spacing:-.8px}
+@media(max-width:700px){.nav-logo .asygna-wordmark{font-size:24px}.nav-logo .asygna-mark{width:31px;height:31px}.stage-final-logo .asygna-mark{width:52px;height:52px}.stage-final-logo .asygna-wordmark{font-size:42px}.hero{padding-top:4.3rem}.hero-sub{max-width:430px}}
+@media(prefers-reduced-motion:reduce){.mark-line,.mark-node{animation:none;opacity:1;stroke-dashoffset:0;transform:none}}
+
 </style></head>
 <body>
 <nav id="main-nav">
-<a class="nav-logo" href="#" id="nav-logo-wrap">
-<span id="nav-logo-text" style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:300;letter-spacing:-1px;white-space:nowrap;line-height:1.6;color:#f4faf7;position:relative;display:inline-block;">asy<span id="nav-g-slot" style="visibility:hidden;letter-spacing:6px;">g</span>na<canvas id="nav-g-canvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas></span>
-</a>
+<a class="nav-logo" href="#" id="nav-logo-wrap"><span class="asygna-logo asygna-logo--dark" aria-label="Asygna">
+<svg class="asygna-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <path class="mark-line mark-line-1" d="M13 18 L32 9 L51 18"/>
+  <path class="mark-line mark-line-2" d="M13 18 L13 43 L32 54"/>
+  <path class="mark-line mark-line-3" d="M51 18 L51 43 L32 54"/>
+  <path class="mark-line mark-line-4" d="M13 18 L32 32 L51 18"/>
+  <path class="mark-line mark-line-5" d="M13 43 L32 32 L51 43"/>
+  <circle class="mark-node n1" cx="13" cy="18" r="4"/>
+  <circle class="mark-node n2" cx="32" cy="9" r="4"/>
+  <circle class="mark-node n3" cx="51" cy="18" r="4"/>
+  <circle class="mark-node n4" cx="13" cy="43" r="4"/>
+  <circle class="mark-node n5" cx="51" cy="43" r="4"/>
+  <circle class="mark-node mark-node-center" cx="32" cy="32" r="6"/>
+  <circle class="mark-node n6" cx="32" cy="54" r="4"/>
+</svg>
+<span class="asygna-wordmark">asygna</span>
+</span></a>
 <div class="nav-links"><a href="#shift-story">La experiencia</a><a href="#implementation">Implementación</a><a href="#capabilities">Control</a><a href="#pricing">Precios</a><a href="#contact">Acceso anticipado</a></div>
 <div class="nav-right">
 <a class="nav-demo" href="https://demo.asygna.cl" rel="noopener" target="_blank">Ver demo</a>
@@ -341,8 +374,8 @@
 <div class="hero-wrap">
 <div class="hero">
 <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Próximamente · Acceso anticipado abierto</div>
-<h1>Tu operación no debería depender de<br/><em>planillas, llamadas y mensajes de último minuto.</em></h1>
-<p class="hero-sub" id="hero-sub">Asygna conecta asignaciones, reemplazos, horas trabajadas y pagos en un único flujo operativo.</p>
+<h1>Cada turno.<br/><em>Bajo control.</em></h1>
+<p class="hero-sub" id="hero-sub">Asigna personal, cubre ausencias y transforma horas reales en pagos, sin planillas ni llamadas.</p>
 <div class="hero-actions">
 <a class="btn-primary" href="#contact">Asegurar mi cupo</a>
 <a class="btn-ghost-dark" href="https://demo.asygna.cl" rel="noopener" target="_blank">
@@ -352,7 +385,7 @@
         </span>
 </a>
 </div>
-<p class="hero-note">Acceso anticipado para empresas que coordinan personas en múltiples puntos de servicio.</p>
+
 </div>
 <div class="hero-mockup">
 <div class="mockup-window">
@@ -430,7 +463,23 @@
 <div aria-hidden="true" class="story-dots"><span class="story-dot active"></span><span class="story-dot"></span><span class="story-dot"></span><span class="story-dot"></span><span class="story-dot"></span><span class="story-dot"></span><span class="story-dot"></span><span class="story-dot"></span></div>
 </div>
 <div aria-hidden="true" class="shift-stage">
-<div class="stage-bar"><div class="stage-brand">asy<b>g</b>na</div><div class="stage-status" id="stage-status">Planificación activa</div></div>
+<div class="stage-bar"><div class="stage-brand"><span class="asygna-logo asygna-logo--light asygna-logo--stage" aria-label="Asygna">
+<svg class="asygna-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <path class="mark-line mark-line-1" d="M13 18 L32 9 L51 18"/>
+  <path class="mark-line mark-line-2" d="M13 18 L13 43 L32 54"/>
+  <path class="mark-line mark-line-3" d="M51 18 L51 43 L32 54"/>
+  <path class="mark-line mark-line-4" d="M13 18 L32 32 L51 18"/>
+  <path class="mark-line mark-line-5" d="M13 43 L32 32 L51 43"/>
+  <circle class="mark-node n1" cx="13" cy="18" r="4"/>
+  <circle class="mark-node n2" cx="32" cy="9" r="4"/>
+  <circle class="mark-node n3" cx="51" cy="18" r="4"/>
+  <circle class="mark-node n4" cx="13" cy="43" r="4"/>
+  <circle class="mark-node n5" cx="51" cy="43" r="4"/>
+  <circle class="mark-node mark-node-center" cx="32" cy="32" r="6"/>
+  <circle class="mark-node n6" cx="32" cy="54" r="4"/>
+</svg>
+<span class="asygna-wordmark">asygna</span>
+</span></div><div class="stage-status" id="stage-status">Planificación activa</div></div>
 <div class="stage-workspace">
 <div class="story-scene scene-active" data-scene="0">
 <div class="scene-label">Planificación semanal</div>
@@ -443,7 +492,23 @@
 <div class="story-scene" data-scene="4"><div class="scene-label">Facturación y liquidaciones</div><div class="invoice-card"><b>Resumen automático</b><div class="invoice-row header"><span>Concepto</span><span>Horas</span><span>Tarifa</span></div><div class="invoice-row"><span>Turnos regulares</span><span>168 h</span><span>$2.856.000</span></div><div class="invoice-row"><span>Recargo nocturno</span><span>48 h</span><span>$408.000</span></div><div class="invoice-row"><span>Reemplazos</span><span>12 h</span><span>$228.000</span></div><div class="invoice-total"><span>Total facturable</span><strong>$3.492.000</strong></div></div><div class="document-stack"><div class="doc"></div><div class="doc"></div><div class="doc"><div class="doc-line green"></div><div class="doc-line"></div><div class="doc-line"></div><div class="doc-line" style="width:72%"></div><div class="doc-line" style="margin-top:38px"></div><div class="doc-line green" style="width:40%"></div></div></div></div>
 <div class="story-scene" data-scene="5"><div class="scene-label">Operación multiempresa</div><div class="tenant-hub"><div><strong>Asygna</strong><small>Una plataforma</small></div></div><div class="tenant-card tenant-a"><b>Clínica Norte</b><small>Operación independiente</small><span class="db-chip">Base de datos propia</span></div><div class="tenant-card tenant-b"><b>Atención Domiciliaria</b><small>Operación independiente</small><span class="db-chip">Base de datos propia</span></div><div class="tenant-card tenant-c"><b>Seguridad Atlas</b><small>Operación independiente</small><span class="db-chip">Base de datos propia</span></div><div class="tenant-card tenant-d"><b>Logística Sur</b><small>Operación independiente</small><span class="db-chip">Base de datos propia</span></div></div>
 <div class="story-scene" data-scene="6"><div class="scene-label">Dashboard operativo</div><div class="dashboard-card"><div class="dash-panel"><div class="dash-title">Estado general de la operación</div><div class="dash-kpis"><div class="dash-kpi good"><span>Cobertura</span><strong>99%</strong></div><div class="dash-kpi good"><span>Horas validadas</span><strong>1.248</strong></div><div class="dash-kpi"><span>Ausencias pendientes</span><strong>0</strong></div><div class="dash-kpi good"><span>Facturación</span><strong>Lista</strong></div></div><div class="dash-chart"><i class="dash-bar" style="height:44%"></i><i class="dash-bar" style="height:61%"></i><i class="dash-bar" style="height:56%"></i><i class="dash-bar" style="height:78%"></i><i class="dash-bar" style="height:91%"></i><i class="dash-bar" style="height:96%"></i></div></div><div class="dash-panel"><div class="dash-title">Procesos completados</div><div class="dash-list"><div class="dash-list-row"><b>Turnos asignados</b><span class="dash-ok">✓ Listo</span></div><div class="dash-list-row"><b>Reemplazos</b><span class="dash-ok">✓ Cubiertos</span></div><div class="dash-list-row"><b>Horas efectivas</b><span class="dash-ok">✓ Validadas</span></div><div class="dash-list-row"><b>Liquidaciones</b><span class="dash-ok">✓ Generadas</span></div><div class="dash-list-row"><b>Facturas</b><span class="dash-ok">✓ Preparadas</span></div></div></div></div></div>
-<div class="stage-final" id="stage-final"><div class="stage-final-inner"><div class="stage-final-logo">asy<b>g</b>na</div><p class="final-headline">Todo funcionando.<br/>Sin planillas. Sin llamadas. Sin caos.</p><p class="final-sub">La operación completa, conectada de principio a fin.</p><div class="final-flow"><span>Asignar</span><span>Reemplazar</span><span>Validar</span><span>Facturar</span></div><span class="final-cta">Solicitar acceso anticipado</span></div></div>
+<div class="stage-final" id="stage-final"><div class="stage-final-inner"><div class="stage-final-logo"><span class="asygna-logo asygna-logo--light asygna-logo--final" aria-label="Asygna">
+<svg class="asygna-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <path class="mark-line mark-line-1" d="M13 18 L32 9 L51 18"/>
+  <path class="mark-line mark-line-2" d="M13 18 L13 43 L32 54"/>
+  <path class="mark-line mark-line-3" d="M51 18 L51 43 L32 54"/>
+  <path class="mark-line mark-line-4" d="M13 18 L32 32 L51 18"/>
+  <path class="mark-line mark-line-5" d="M13 43 L32 32 L51 43"/>
+  <circle class="mark-node n1" cx="13" cy="18" r="4"/>
+  <circle class="mark-node n2" cx="32" cy="9" r="4"/>
+  <circle class="mark-node n3" cx="51" cy="18" r="4"/>
+  <circle class="mark-node n4" cx="13" cy="43" r="4"/>
+  <circle class="mark-node n5" cx="51" cy="43" r="4"/>
+  <circle class="mark-node mark-node-center" cx="32" cy="32" r="6"/>
+  <circle class="mark-node n6" cx="32" cy="54" r="4"/>
+</svg>
+<span class="asygna-wordmark">asygna</span>
+</span></div><p class="final-headline">Todo funcionando.<br/>Sin planillas. Sin llamadas. Sin caos.</p><p class="final-sub">La operación completa, conectada de principio a fin.</p><div class="final-flow"><span>Asignar</span><span>Reemplazar</span><span>Validar</span><span>Facturar</span></div><span class="final-cta">Solicitar acceso anticipado</span></div></div>
 <div class="scroll-cue">DESLIZA PARA RESOLVER ↓</div>
 </div>
 </div>
@@ -625,17 +690,25 @@
 </div>
 </section>
 <footer>
-<a href="#" id="footer-logo-wrap" style="text-decoration:none;">
-<span id="footer-logo-text" style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:300;letter-spacing:-1px;white-space:nowrap;line-height:1.5;color:#f4faf7;position:relative;display:inline-block;">asy<span id="footer-g-slot" style="visibility:hidden;letter-spacing:6px;">g</span>na<canvas id="footer-g-canvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas></span>
-</a>
+<a href="#" id="footer-logo-wrap" style="text-decoration:none;"><span class="asygna-logo asygna-logo--light" aria-label="Asygna">
+<svg class="asygna-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <path class="mark-line mark-line-1" d="M13 18 L32 9 L51 18"/>
+  <path class="mark-line mark-line-2" d="M13 18 L13 43 L32 54"/>
+  <path class="mark-line mark-line-3" d="M51 18 L51 43 L32 54"/>
+  <path class="mark-line mark-line-4" d="M13 18 L32 32 L51 18"/>
+  <path class="mark-line mark-line-5" d="M13 43 L32 32 L51 43"/>
+  <circle class="mark-node n1" cx="13" cy="18" r="4"/>
+  <circle class="mark-node n2" cx="32" cy="9" r="4"/>
+  <circle class="mark-node n3" cx="51" cy="18" r="4"/>
+  <circle class="mark-node n4" cx="13" cy="43" r="4"/>
+  <circle class="mark-node n5" cx="51" cy="43" r="4"/>
+  <circle class="mark-node mark-node-center" cx="32" cy="32" r="6"/>
+  <circle class="mark-node n6" cx="32" cy="54" r="4"/>
+</svg>
+<span class="asygna-wordmark">asygna</span>
+</span></a>
 <div class="footer-copy">© 2026 Asygna · asygna.cl</div>
 </footer>
-<div class="mobile-cta">
-<div style="display:flex;gap:8px;">
-<a href="https://demo.asygna.cl" rel="noopener" style="flex:0 0 auto;background:transparent;color:var(--brand);border:1px solid var(--brand);padding:14px 18px;" target="_blank">Demo</a>
-<a href="#contact" style="flex:1;">Reservar mi cupo gratis</a>
-</div>
-</div>
 <script>
 var industries = [
   {id:'salud',label:'Salud',heroWord:'caos de turnos.',sub:'Gestiona turnos de enfermeras, técnicos y médicos cumpliendo normativas de descanso y cobertura mínima por turno.',previewTitle:'Cobertura garantizada en clínicas y hospitales',previewDesc:'Control de turnos 4x4, guardias de urgencia, descansos compensatorios y alertas de dotación mínima por servicio.',badge:'Salud'},
@@ -828,24 +901,6 @@ var statsObs=new IntersectionObserver(function(entries) {
 var statsEl=document.querySelector('.stats');
 if(statsEl) statsObs.observe(statsEl);
 
-// Typing rotativo
-var words=['caos.','desorden.','papeleo.','Excel.','estrés.'];
-var wi=0; var heroEm=document.getElementById('hero-industry'); var isTyping=false;
-function typeWord(word) {
-  if(isTyping) return; isTyping=true; var i=0; heroEm.textContent='';
-  var iv=setInterval(function(){ heroEm.textContent=word.slice(0,++i); if(i>=word.length){clearInterval(iv);isTyping=false;} },60);
-}
-setInterval(function() {
-  if(activeId) return;
-  wi=(wi+1)%words.length;
-  var erIv=setInterval(function(){
-    var cur=heroEm.textContent;
-    if(cur.length===0){clearInterval(erIv);setTimeout(function(){typeWord(words[wi]);},150);}
-    else heroEm.textContent=cur.slice(0,-1);
-  },40);
-},2800);
-
-
 // Narrativa controlada por scroll
 (function(){
   var story=document.getElementById('shift-story');if(!story)return;
@@ -883,53 +938,6 @@ setInterval(function() {
   window.addEventListener('scroll',function(){if(!contact)return;var r=contact.getBoundingClientRect(),p=Math.max(-1,Math.min(1,(window.innerHeight/2-(r.top+r.height/2))/window.innerHeight));contact.style.setProperty('--contact-shift',(p*18)+'px')},{passive:true});
 })();
 
-</script>
-<script>
-function drawAsygnaLogo(canvasEl, outerEl, slotEl, textColor) {
-  var dpr = window.devicePixelRatio || 1;
-  var oR = outerEl.getBoundingClientRect();
-  var gR = slotEl.getBoundingClientRect();
-  canvasEl.width = oR.width * dpr;
-  canvasEl.height = oR.height * dpr;
-  canvasEl.style.width = oR.width + 'px';
-  canvasEl.style.height = oR.height + 'px';
-  var ctx = canvasEl.getContext('2d');
-  ctx.scale(dpr, dpr);
-  ctx.clearRect(0, 0, oR.width, oR.height);
-  var gx = gR.left - oR.left;
-  var gy = gR.top - oR.top;
-  var gw = gR.width;
-  var gh = gR.height;
-  var r = gw * 0.46;
-  var sw = r * 0.30;
-  var cx = gx + gw * 0.50;
-  var cy = gy + gh * 0.52;
-  var green = '#1D9E75';
-  ctx.lineCap = 'round';
-  ctx.strokeStyle = green;
-  ctx.lineWidth = sw;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(cx + r, cy);
-  ctx.bezierCurveTo(cx + r + sw * 0.2, cy + gh * 0.36, cx, cy + gh * 0.54, cx - gw * 0.22, cy + gh * 0.42);
-  ctx.stroke();
-  ctx.strokeStyle = textColor;
-  ctx.lineWidth = sw * 0.40;
-  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy - r * 0.58); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + r * 0.50, cy + r * 0.24); ctx.stroke();
-  ctx.fillStyle = green;
-  ctx.beginPath(); ctx.arc(cx, cy, sw * 0.46, 0, Math.PI * 2); ctx.fill();
-}
-
-function initLogos() {
-  drawAsygnaLogo(document.getElementById('nav-g-canvas'), document.getElementById('nav-logo-text'), document.getElementById('nav-g-slot'), '#f4faf7');
-  drawAsygnaLogo(document.getElementById('footer-g-canvas'), document.getElementById('footer-logo-text'), document.getElementById('footer-g-slot'), '#f4faf7');
-}
-
-document.fonts ? document.fonts.ready.then(initLogos) : setTimeout(initLogos, 600);
-window.addEventListener('resize', initLogos);
 </script>
 </body>
 </html>
