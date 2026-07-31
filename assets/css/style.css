@@ -489,6 +489,15 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
   .shift-copy{min-height:268px}
   .shift-stage{height:430px;min-height:430px;max-height:430px}
   .shift-step h2{font-size:clamp(31px,9vw,40px)}
+
+  /* Tarjetas de nombres: un poco mas angostas para que quepan las 3
+     de la fila superior (Ana Torres / Camila Rojas / Paula Vega) sin
+     tocarse ni quedar recortadas por el borde del panel. */
+  .shift-worker{width:86px;padding:6px 7px}
+  .shift-worker strong{font-size:9px;margin-bottom:2px}
+  .shift-worker small{font-size:7px}
+  .shift-day{padding:6px 3px}
+  .shift-day span{font-size:7px}
 }
 
 /* ═══ V9 — corrección definitiva de solapamiento móvil ═══ */
