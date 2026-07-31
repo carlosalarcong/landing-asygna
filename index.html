@@ -344,7 +344,104 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
 @media(max-width:700px){.nav-logo .asygna-wordmark{font-size:24px}.nav-logo .asygna-mark{width:31px;height:31px}.stage-final-logo .asygna-mark{width:52px;height:52px}.stage-final-logo .asygna-wordmark{font-size:42px}.hero{padding-top:4.3rem}.hero-sub{max-width:430px}}
 @media(prefers-reduced-motion:reduce){.mark-line,.mark-node{animation:none;opacity:1;stroke-dashoffset:0;transform:none}}
 
-</style></head>
+</style>
+<style id="v6-responsive-refinement">
+/* V6 — desktop refinado + experiencia móvil específica */
+@media (min-width: 901px){
+  .tenant-hub{width:138px;height:138px;border-radius:24px}
+  .tenant-card{width:158px;padding:15px 16px}
+  .tenant-a,.tenant-c{left:5%}.tenant-b,.tenant-d{right:5%}
+  .tenant-card::after{width:125px}
+  .shift-stage{will-change:transform;contain:layout paint}
+}
+
+@media (max-width: 900px){
+  body{padding-bottom:0!important}
+  nav{height:72px!important;padding:0 16px!important;gap:10px!important}
+  .nav-links,.nav-demo,.nav-login{display:none!important}
+  .nav-logo{margin-right:auto}
+  .asygna-mark{width:31px;height:31px}.asygna-wordmark{font-size:25px}
+  .nav-cta{padding:10px 14px!important;font-size:13px!important;white-space:nowrap}
+
+  .shift-story{height:800vh;background:#06120d}
+  .shift-story::before{background:radial-gradient(520px 360px at 60% 18%,rgba(29,158,117,.10),transparent 70%);background-size:auto}
+  .shift-sticky{min-height:100svh;display:block;padding:88px 16px 18px;max-width:none}
+  .shift-copy{min-height:238px;padding:0 2px}
+  .shift-step{justify-content:flex-start;padding-top:0}
+  .shift-step h2{font-size:clamp(34px,9.8vw,48px);line-height:1.02;letter-spacing:-.045em;margin:14px 0 16px}
+  .shift-step h2 br{display:none}
+  .shift-step p{font-size:15px;line-height:1.58;max-width:100%;margin:0}
+  .shift-step .section-label{font-size:11px;letter-spacing:.12em}
+  .story-dots{margin-top:16px;gap:5px}.story-dot{width:20px}.story-dot.active{width:34px}
+
+  .shift-stage{min-height:500px;height:calc(100svh - 350px);max-height:610px;border-radius:22px;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+  .shift-stage::before{opacity:.18;background-size:44px 44px}
+  .stage-bar{height:56px;padding:0 15px}.stage-brand{font-size:16px}.stage-status{font-size:11px;max-width:48%;text-align:right}
+  .stage-workspace{inset:68px 13px 14px}
+  .story-scene{transition:opacity .12s linear,transform .12s linear}
+  .scene-label{font-size:9px}
+
+  .absence-card,.replacement-card,.validation-card,.invoice-card,.tenant-card,.dash-panel{box-shadow:none}
+
+  /* Cumplimiento: línea temporal vertical */
+  .validation-card{inset:9% 3% 5%;padding:18px 16px}
+  .validation-card>b{display:block;max-width:72%;font-size:14px}
+  .validation-pill{top:16px;right:14px;padding:6px 9px;font-size:9px}
+  .timeline{height:310px;margin-top:24px}
+  .timeline-line{left:31px;right:auto;top:22px;width:4px;height:240px}
+  .timeline-fill{width:100%!important;height:0;background:linear-gradient(180deg,var(--brand),var(--brand-bright))}
+  .time-point{left:10px!important;right:auto!important;top:auto;width:44px;height:44px}
+  .tp1{top:2px}.tp2{top:100px}.tp3{top:198px}
+  .time-note{left:70px!important;right:auto!important;top:auto;font-size:12px;white-space:normal}
+  .tn1{top:15px}.tn2{top:113px}.tn3{top:211px}
+
+  /* Finanzas: una sola columna, monto siempre contenido */
+  .invoice-card{left:2%;right:2%;top:8%;width:auto;padding:17px}
+  .invoice-card>b{font-size:16px}
+  .invoice-row{grid-template-columns:1.25fr .55fr .8fr;gap:6px;padding:10px 0;font-size:10px}
+  .invoice-row span:last-child{text-align:right;overflow-wrap:anywhere}
+  .invoice-total{align-items:flex-end;gap:10px;padding-top:14px}
+  .invoice-total span{font-size:12px}.invoice-total strong{font-size:clamp(22px,7vw,31px);white-space:nowrap}
+  .document-stack{display:none}
+
+  /* Multiempresa: flujo vertical, sin cruces ni superposición */
+  .tenant-hub{position:absolute;left:50%;top:6%;width:120px;height:78px;border-radius:18px;transform:translateX(-50%);box-shadow:0 0 0 10px rgba(43,200,147,.035);z-index:3}
+  .tenant-hub strong{font-size:15px}.tenant-hub small{font-size:9px}
+  .tenant-card{position:absolute;left:4%!important;right:4%!important;width:auto;padding:11px 13px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;border-radius:13px}
+  .tenant-card b{font-size:12px}.tenant-card small{font-size:9px}.db-chip{grid-column:2;grid-row:1/3;margin:0;font-size:8px;white-space:nowrap}
+  .tenant-card::after{content:'';left:50%!important;right:auto!important;top:auto;width:1px!important;height:18px!important;transform:none!important;background:rgba(43,200,147,.38)}
+  .tenant-a{top:30%}.tenant-b{top:47%}.tenant-c{top:64%;bottom:auto}.tenant-d{top:81%;bottom:auto}
+  .tenant-a::after,.tenant-b::after,.tenant-c::after{top:-19px}.tenant-d::after{top:-19px}
+
+  /* Dashboard: resumen compacto, sin altura rígida */
+  .dashboard-card{inset:7% 2% 2%;display:block;overflow:visible}
+  .dashboard-card .dash-panel:first-child{height:auto;padding:14px}
+  .dashboard-card .dash-panel:last-child{display:none}
+  .dash-title{margin-bottom:11px}.dash-kpis{gap:8px}.dash-kpi{padding:11px}.dash-kpi strong{font-size:22px}.dash-chart{height:105px;gap:7px;padding-top:14px}
+
+  /* Planificación y reemplazo compactos */
+  .shift-worker{width:96px;padding:8px;border-radius:11px}.shift-worker strong{font-size:10px}.shift-worker small{font-size:8px}
+  .shift-calendar{inset:30px 0 92px;gap:4px}.shift-day{padding:7px 4px;border-radius:10px}.shift-day span{font-size:8px}
+  .shift-metric{min-height:66px;padding:9px;width:32%}.shift-metric.m2{left:34%}.shift-metric span{font-size:8px}.shift-metric strong{font-size:17px}
+  .absence-card{left:2%;top:8%;width:96%;padding:14px}.replacement-card{left:2%;right:auto;top:48%;width:96%;padding:14px}
+  .replacement-line{left:50%;top:39%;width:2px;height:42px;background:linear-gradient(180deg,#ff776b,var(--brand-bright));transform-origin:top}
+  .resolve-check{top:88%;width:50px;height:50px;font-size:22px}
+
+  /* Safari/iOS: reducir coste de composición */
+  .shift-worker,.tenant-card,.doc,.dash-bar{will-change:auto!important}
+  .scroll-progress{box-shadow:none}
+}
+
+@media (max-width: 430px){
+  .shift-sticky{padding-left:13px;padding-right:13px}
+  .shift-copy{min-height:226px}
+  .shift-stage{height:calc(100svh - 336px);min-height:470px}
+  .stage-status{display:none}
+  .invoice-row{font-size:9px}.invoice-total strong{font-size:23px}
+}
+</style>
+
+</head>
 <body>
 <nav id="main-nav">
 <a class="nav-logo" href="#" id="nav-logo-wrap"><span class="asygna-logo asygna-logo--dark" aria-label="Asygna">
@@ -917,7 +1014,7 @@ if(statsEl) statsObs.observe(statsEl);
     var segment=1/8,local=clamp((raw-active*segment)/segment);
     if(active<=1){var organize=active===0?ease(local*.45):ease(.45+local*.55);workers.forEach(function(el,i){var x=lerp(starts[i].x,targets[i].x,organize),y=lerp(starts[i].y,targets[i].y,organize);el.style.left=x+'%';el.style.top=y+'%';el.style.transform='translate(-50%,-50%) rotate('+lerp(i%2?5:-5,0,organize)+'deg)';el.style.opacity=1});calendar.style.opacity=lerp(.24,1,organize);calendar.style.transform='scale('+lerp(.965,1,organize)+')';metrics.forEach(function(el,i){var t=clamp((organize-.58)*3-i*.12);el.style.opacity=t;el.style.transform='translateY('+lerp(24,0,ease(t))+'px)'})}
     if(active===2){var line=document.querySelector('.replacement-line'),check=document.querySelector('.resolve-check');line.style.transform='scaleX('+ease(local)+')';check.style.opacity=clamp((local-.62)*3);check.style.transform='translate(-50%,-50%) scale('+lerp(.4,1,ease((local-.55)*2.2))+')'}
-    if(active===3){var fill=document.querySelector('.timeline-fill'),pill=document.querySelector('.validation-pill');fill.style.width=(ease(local)*100)+'%';pill.style.opacity=clamp((local-.62)*3);pill.style.transform='translateY('+lerp(8,0,ease((local-.55)*2.2))+'px)'}
+    if(active===3){var fill=document.querySelector('.timeline-fill'),pill=document.querySelector('.validation-pill');if(window.innerWidth<=900){fill.style.width='100%';fill.style.height=(ease(local)*100)+'%'}else{fill.style.height='100%';fill.style.width=(ease(local)*100)+'%'};pill.style.opacity=clamp((local-.62)*3);pill.style.transform='translateY('+lerp(8,0,ease((local-.55)*2.2))+'px)'}
     if(active===4){var docs=[].slice.call(document.querySelectorAll('.doc'));docs.forEach(function(d,i){var t=clamp(local*1.4-i*.15);d.style.transform='rotate('+lerp((2-i)*4,0,ease(t))+'deg) translate('+lerp((2-i)*8,0,ease(t))+'px,'+lerp((2-i)*3,0,ease(t))+'px)'})}
     if(active===5){var cards=[].slice.call(document.querySelectorAll('.tenant-card'));cards.forEach(function(c,i){var t=clamp(local*1.5-i*.12);c.style.opacity=t;c.style.transform='translateY('+lerp(18,0,ease(t))+'px)'})}
     if(active===6){var dash=document.querySelector('.dashboard-card'),bars=[].slice.call(document.querySelectorAll('.dash-bar'));dash.style.opacity=ease(local);dash.style.transform='translateY('+lerp(18,0,ease(local))+'px) scale('+lerp(.97,1,ease(local))+')';bars.forEach(function(b,i){var t=clamp(local*1.5-i*.1);b.style.transform='scaleY('+lerp(.05,1,ease(t))+')';b.style.opacity=lerp(.25,1,ease(t))})}
