@@ -51,7 +51,35 @@
     "availability": "https://schema.org/PreOrder",
     "priceCurrency": "CLP"
   }
-}</script></head>
+}</script>
+<style id="critical-responsive">
+  [hidden]{display:none!important}
+  @media (max-width:900px){
+    [data-story-desktop]{display:none!important}
+    [data-story-mobile]{display:block!important}
+    .hero h1 br{display:none!important}
+    .hero h1{font-size:clamp(38px,10.5vw,52px)!important;line-height:1.02!important;letter-spacing:-.045em!important;max-width:100%!important}
+  }
+  @media (min-width:901px){
+    [data-story-desktop]{display:grid!important}
+    [data-story-mobile]{display:none!important}
+  }
+</style>
+<script>
+(function(){
+  var mq=window.matchMedia('(max-width: 900px)');
+  function syncStoryMode(){
+    var desktop=document.querySelector('[data-story-desktop]');
+    var mobile=document.querySelector('[data-story-mobile]');
+    if(!desktop||!mobile)return;
+    if(mq.matches){desktop.hidden=true;mobile.hidden=false;}
+    else{desktop.hidden=false;mobile.hidden=true;}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',syncStoryMode,{once:true});}else{syncStoryMode();}
+  if(mq.addEventListener)mq.addEventListener('change',syncStoryMode);else mq.addListener(syncStoryMode);
+})();
+</script>
+</head>
 <body>
 <nav id="main-nav">
 <a class="nav-logo" href="#" id="nav-logo-wrap"><span aria-label="Asygna" class="asygna-logo asygna-logo--dark">
@@ -81,7 +109,7 @@
 <div class="hero-wrap">
 <div class="hero">
 <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Próximamente · Acceso anticipado abierto</div>
-<h1>Cada turno.<br/><em>Bajo control.</em></h1>
+<h1>Cada turno, <em>bajo control.</em></h1>
 <p class="hero-sub" id="hero-sub">Asigna personal, cubre ausencias y transforma horas reales en pagos, sin planillas ni llamadas.</p>
 <div class="hero-actions">
 <a class="btn-primary" href="#contact">Asegurar mi cupo</a>
@@ -155,7 +183,7 @@
 <div class="context-converge"><span></span><b>Todo converge en un solo flujo operativo</b><span></span></div>
 </div>
 </section><section aria-label="Problemas que Asygna resuelve" class="shift-story" id="shift-story">
-<div class="shift-sticky">
+<div class="shift-sticky desktop-story" data-story-desktop>
 <div class="shift-copy">
 <article class="shift-step is-active" data-shift-copy="0"><div class="section-label">01 · Planificación</div><h2>Turnos dispersos.<br/>Una operación frágil.</h2><p>Personas, disponibilidades, clientes y puntos de servicio parten como piezas separadas. Asygna convierte ese caos en una planificación operativa clara.</p></article>
 <article class="shift-step" data-shift-copy="1"><div class="section-label">02 · Asignación</div><h2>Cada recurso<br/>encuentra su lugar.</h2><p>Los colaboradores se distribuyen según jornada, disponibilidad, contrato y necesidad real de cada punto de servicio.</p></article>
@@ -219,7 +247,7 @@
 </div>
 </div>
 
-<div class="mobile-story" aria-label="Cómo Asygna conecta toda la operación">
+<div class="mobile-story" data-story-mobile aria-label="Cómo Asygna conecta toda la operación">
   <div class="mobile-story-intro">
     <div class="section-label">La operación, de principio a fin</div>
     <h2>Todo lo que ocurre en un turno.<br>En una lectura rápida.</h2>
@@ -504,5 +532,5 @@
 <div class="footer-copy">© 2026 Asygna · asygna.cl</div>
 </footer>
 
-<script defer="True" src="assets/js/main.js"></script></body>
+<script defer src="assets/js/main.js"></script></body>
 </html>
