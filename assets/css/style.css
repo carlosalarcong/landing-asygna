@@ -274,18 +274,6 @@
     .shift-calendar{position:absolute;inset:32px 0 108px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;opacity:.24;transform:scale(.965)}.shift-day{border:1px solid var(--border-inverse);border-radius:16px;background:rgba(255,255,255,.025);padding:14px 10px}.shift-day span{font-size:11px;color:var(--text-inverse-dim);letter-spacing:.08em}
     .shift-worker{position:absolute;width:142px;padding:13px 14px;border-radius:15px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,#15362b,#0d211a);box-shadow:0 18px 42px rgba(0,0,0,.34);transform:translate(-50%,-50%);z-index:5;will-change:left,top,transform,opacity}.shift-worker strong{display:block;font-size:13px;font-weight:500;margin-bottom:4px}.shift-worker small{display:block;color:var(--text-inverse-dim);font-size:11px}.shift-worker i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--brand-bright);margin-right:7px;box-shadow:0 0 7px rgba(43,200,147,.7)}
     .shift-metric{position:absolute;bottom:0;width:31%;min-height:82px;padding:14px 15px;border-radius:15px;border:1px solid var(--border-inverse);background:rgba(12,31,24,.94);opacity:0;transform:translateY(24px);z-index:7}.shift-metric.m1{left:0}.shift-metric.m2{left:34.5%}.shift-metric.m3{right:0}.shift-metric span{font-size:11px;color:var(--text-inverse-dim)}.shift-metric strong{display:block;font-family:var(--serif);font-size:24px;color:var(--text-inverse);margin-top:5px}
-    /* Lista estática de "Planificación semanal" para móvil (ver media
-       query max-width:900px): mismo contenido que el mockup animado de
-       escritorio, pero legible y sin depender de posiciones flotantes. */
-    .shift-schedule-mobile{display:none;flex-direction:column;gap:7px;height:100%;padding-top:28px;justify-content:center}
-    .schedule-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}
-    .schedule-row i{width:8px;height:8px;border-radius:50%;background:var(--brand-bright);box-shadow:0 0 7px rgba(43,200,147,.7);flex-shrink:0}
-    .schedule-row strong{display:block;font-size:14px;font-weight:500;color:var(--text-inverse);margin-bottom:2px}
-    .schedule-row small{display:block;font-size:11.5px;color:var(--text-inverse-dim)}
-    .schedule-stats{display:flex;gap:7px;margin-top:3px}
-    .schedule-stats div{flex:1;text-align:center;padding:9px 4px;border-radius:12px;background:rgba(12,31,24,.9);border:1px solid var(--border-inverse)}
-    .schedule-stats span{display:block;font-size:10.5px;color:var(--text-inverse-dim);margin-bottom:4px}
-    .schedule-stats strong{display:block;font-family:var(--serif);font-size:18px;color:var(--text-inverse)}
     .absence-card,.replacement-card,.validation-card,.invoice-card,.tenant-card{position:absolute;border:1px solid var(--border-inverse);background:rgba(11,29,22,.96);border-radius:17px;box-shadow:0 18px 50px rgba(0,0,0,.32)}
     .absence-card{left:7%;top:19%;width:42%;padding:20px}.absence-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.absence-head b{font-size:14px}.alert-badge{font-size:10px;color:#ffb4ad;background:rgba(255,104,91,.12);border:1px solid rgba(255,104,91,.25);padding:5px 9px;border-radius:99px}.absence-person{padding:14px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}.absence-person strong{font-size:13px;display:block}.absence-person small{font-size:11px;color:var(--text-inverse-dim)}
     .replacement-card{right:7%;top:17%;width:39%;padding:20px}.candidate{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border-inverse)}.candidate:last-child{border-bottom:0}.candidate-name{font-size:12px}.candidate-fit{font-size:10px;color:var(--brand-bright)}.replacement-line{position:absolute;left:45%;top:37%;width:12%;height:2px;background:linear-gradient(90deg,#ff776b,var(--brand-bright));transform-origin:left;box-shadow:0 0 12px rgba(43,200,147,.5)}
@@ -381,7 +369,7 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
   .stage-bar{height:56px;padding:0 15px}.stage-brand{font-size:16px}.stage-status{font-size:11px;max-width:48%;text-align:right}
   .stage-workspace{inset:68px 13px 14px}
   .story-scene{transition:opacity .12s linear,transform .12s linear}
-  .scene-label{font-size:10px}
+  .scene-label{font-size:9px}
 
   .absence-card,.replacement-card,.validation-card,.invoice-card,.tenant-card,.dash-panel{box-shadow:none}
 
@@ -408,9 +396,9 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
 
   /* Multiempresa: flujo vertical, sin cruces ni superposición */
   .tenant-hub{position:absolute;left:50%;top:6%;width:120px;height:78px;border-radius:18px;transform:translateX(-50%);box-shadow:0 0 0 10px rgba(43,200,147,.035);z-index:3}
-  .tenant-hub strong{font-size:15px}.tenant-hub small{font-size:10px}
+  .tenant-hub strong{font-size:15px}.tenant-hub small{font-size:9px}
   .tenant-card{position:absolute;left:4%!important;right:4%!important;width:auto;padding:11px 13px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;border-radius:13px}
-  .tenant-card b{font-size:13px}.tenant-card small{font-size:10px}.db-chip{grid-column:2;grid-row:1/3;margin:0;font-size:9px;white-space:nowrap}
+  .tenant-card b{font-size:12px}.tenant-card small{font-size:9px}.db-chip{grid-column:2;grid-row:1/3;margin:0;font-size:8px;white-space:nowrap}
   .tenant-card::after{content:'';left:50%!important;right:auto!important;top:auto;width:1px!important;height:18px!important;transform:none!important;background:rgba(43,200,147,.38)}
   .tenant-a{top:30%}.tenant-b{top:47%}.tenant-c{top:64%;bottom:auto}.tenant-d{top:81%;bottom:auto}
   .tenant-a::after,.tenant-b::after,.tenant-c::after{top:-19px}.tenant-d::after{top:-19px}
@@ -459,22 +447,20 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
   .shift-stage{height:440px;min-height:440px;max-height:440px;margin-top:0}
   .stage-workspace{inset:66px 12px 12px}
 
-  /* Planificación: en móvil el mini-calendario animado con tarjetas
-     flotantes obligaba a usar texto minúsculo (7-9px) e igual quedaba
-     apretado. En vez de encoger el mismo dashboard de escritorio, en
-     móvil mostramos una lista estática y legible con la misma
-     información (mismo look de producto, sin animación de arrastre). */
-  .shift-metric,.shift-calendar,.shift-worker{display:none!important}
-  .shift-schedule-mobile{display:flex}
+  /* Asignación: estas métricas sí pertenecen a la escena, pero en móvil
+     se ocultan para priorizar el calendario y evitar que queden cortadas. */
+  .shift-metric{display:none!important}
+  .shift-calendar{inset:30px 0 8px}
+  .shift-worker{width:94px;padding:7px 8px}
 
   /* Reemplazos: todo el listado cabe dentro del panel móvil */
   .absence-card{top:7%;padding:12px}
   .absence-head{margin-bottom:10px;gap:8px}
-  .absence-head b{font-size:13px}.alert-badge{font-size:9px;padding:4px 8px;white-space:nowrap}
-  .absence-person{padding:10px}.absence-person strong{font-size:13px}.absence-person small{font-size:10.5px}
+  .absence-head b{font-size:12px}.alert-badge{font-size:8px;padding:4px 7px;white-space:nowrap}
+  .absence-person{padding:10px}.absence-person strong{font-size:12px}.absence-person small{font-size:9px}
   .replacement-line{top:40%;height:26px}
   .replacement-card{top:48%;padding:11px 13px}
-  .candidate{padding:8px 0}.candidate-name{font-size:12.5px}.candidate-fit{font-size:10px}
+  .candidate{padding:8px 0}.candidate-name{font-size:11px}.candidate-fit{font-size:9px}
   .resolve-check{display:none!important}
 
   /* Cumplimiento: línea vertical más compacta */
@@ -490,8 +476,8 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
 
   /* Finanzas: tabla compacta y total protegido */
   .invoice-card{top:7%;bottom:3%;padding:15px}
-  .invoice-row{padding:8px 0;font-size:10.5px;grid-template-columns:1.1fr .5fr .85fr}
-  .invoice-row.header{font-size:9px}
+  .invoice-row{padding:8px 0;font-size:9px;grid-template-columns:1.15fr .45fr .8fr}
+  .invoice-row.header{font-size:8px}
   .invoice-total{padding-top:12px;align-items:center}
   .invoice-total strong{font-size:clamp(21px,6.5vw,28px)}
 
@@ -503,63 +489,9 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
   .shift-copy{min-height:268px}
   .shift-stage{height:430px;min-height:430px;max-height:430px}
   .shift-step h2{font-size:clamp(31px,9vw,40px)}
-
-  /* Tarjetas de nombres: un poco mas angostas para que quepan las 3
-     de la fila superior (Ana Torres / Camila Rojas / Paula Vega) sin
-     tocarse ni quedar recortadas por el borde del panel. */
-  .shift-worker{width:86px;padding:6px 7px}
-  .shift-worker strong{font-size:9px;margin-bottom:2px}
-  .shift-worker small{font-size:7px}
-  .shift-day{padding:6px 3px}
-  .shift-day span{font-size:7px}
 }
-
-/* ═══ V9 — corrección definitiva de solapamiento móvil ═══ */
-@media (max-width: 900px) {
-  .shift-sticky {
-    padding-top: 82px;
-    padding-bottom: 24px;
-    min-height: 100svh;
-    height: auto;
-  }
-  .shift-copy {
-    min-height: 0 !important;
-    height: auto;
-    padding: 0 2px 22px;
-    margin-bottom: 0;
-    transition: height .22s ease;
-  }
-  .shift-step {
-    justify-content: flex-start;
-  }
-  .shift-step h2 {
-    font-size: clamp(30px, 8.6vw, 41px);
-    line-height: 1.06;
-    margin: 18px 0 14px;
-    overflow-wrap: normal;
-    word-break: normal;
-  }
-  .shift-step h2 br {
-    display: block;
-  }
-  .shift-step p {
-    font-size: 14px;
-    line-height: 1.55;
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
-  }
-  .shift-stage {
-    margin-top: 0;
-    flex: none;
-  }
-}
-
-@media (max-width: 430px) {
-  .shift-step h2 {
-    font-size: clamp(29px, 8.4vw, 38px);
-  }
-  .shift-copy {
-    padding-bottom: 20px;
-  }
-}
+.mobile-story{display:none}
+@media(max-width:900px){
+.story-desktop{display:none!important}.mobile-story{display:block;background:#07120e;color:#f4faf7;padding:72px 18px 82px;overflow:hidden}.mobile-story-head,.mobile-story-card{width:min(100%,560px);margin-inline:auto}.mobile-story-head{margin-bottom:28px}.mobile-story-head .section-label,.mobile-step{color:#41d8a5}.mobile-story-head h2{font-size:clamp(40px,11vw,52px);line-height:1.02;margin:10px 0 16px;color:#f4faf7}.mobile-story-head p,.mobile-story-card>p{font-size:18px;line-height:1.58;color:rgba(244,250,247,.76);margin:0}.mobile-story-card{margin-bottom:18px;padding:24px 18px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#0d211a;box-shadow:none}.mobile-step{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:10px}.mobile-story-card h3{font-family:var(--serif);font-size:clamp(31px,8.4vw,40px);line-height:1.08;color:#f4faf7;margin:0 0 13px}.mobile-story-card>p{margin-bottom:22px}.mobile-calendar{display:grid;gap:10px}.mobile-calendar>div{display:grid;grid-template-columns:48px minmax(0,1fr);gap:7px 10px;padding:13px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.03)}.mobile-calendar b{grid-row:1/3;align-self:center;color:#41d8a5;font-size:12px}.mobile-calendar span{font-size:15px;line-height:1.35}.mobile-slot-ok{color:#41d8a5!important}.mobile-replacement{display:grid;gap:12px}.mobile-alert,.mobile-success{padding:16px;border-radius:15px;display:grid;gap:4px}.mobile-alert{background:rgba(255,105,91,.07);border:1px solid rgba(255,105,91,.24)}.mobile-success{background:rgba(65,216,165,.08);border:1px solid rgba(65,216,165,.25)}.mobile-alert small,.mobile-success small{font-size:12px;text-transform:uppercase;letter-spacing:.07em}.mobile-alert small{color:#ffb4ad}.mobile-success small{color:#41d8a5}.mobile-alert b,.mobile-success b{font-size:19px}.mobile-alert span,.mobile-success span{font-size:14px;color:rgba(244,250,247,.68)}.mobile-flow-arrow{text-align:center;color:#41d8a5;font-size:24px}.mobile-time-row{display:grid;grid-template-columns:52px 18px minmax(0,1fr);gap:10px;align-items:center}.mobile-time-row time{font-size:15px;font-weight:600}.mobile-time-row i{width:14px;height:14px;border-radius:50%;background:#41d8a5}.mobile-time-row div{display:grid;gap:3px}.mobile-time-row b{font-size:16px}.mobile-time-row span{font-size:14px;color:rgba(244,250,247,.65)}.mobile-time-duration{height:70px;margin-left:60px;border-left:2px solid rgba(65,216,165,.38);display:flex;align-items:center;padding-left:25px}.mobile-time-duration span{font-size:14px;color:#41d8a5;background:rgba(65,216,165,.08);padding:7px 10px;border-radius:8px}.mobile-invoice>div{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px}.mobile-invoice>div span{color:rgba(244,250,247,.7)}.mobile-invoice>div b{white-space:nowrap}.mobile-invoice-total{padding-top:18px!important;border-bottom:0!important;align-items:flex-end}.mobile-invoice-total b{font-family:var(--serif);font-size:29px;color:#41d8a5}.mobile-doc-status{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;border:0!important}.mobile-doc-status span{color:#41d8a5!important;background:rgba(65,216,165,.08);padding:11px 12px;border-radius:10px}.mobile-tenants{display:grid;gap:11px}.mobile-hub,.mobile-tenant{text-align:center;border-radius:14px;padding:14px;background:#102a21;border:1px solid rgba(65,216,165,.23)}.mobile-hub{width:min(190px,70%);justify-self:center;color:#41d8a5;font-size:20px;font-weight:600}.mobile-hub small{display:block;font-size:12px;color:rgba(244,250,247,.6)}.mobile-tenant{display:grid;gap:4px}.mobile-tenant b{font-size:17px}.mobile-tenant span{font-size:14px;color:#41d8a5}.mobile-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.mobile-kpis>div{padding:17px 10px;text-align:center;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.mobile-kpis strong{display:block;font-family:var(--serif);font-size:31px;color:#41d8a5}.mobile-kpis span{display:block;margin-top:6px;font-size:13px;color:rgba(244,250,247,.65)}.mobile-final-message{margin-top:16px;padding:18px;text-align:center;border-radius:15px;background:rgba(65,216,165,.1)}.mobile-final-message b{display:block;font-family:var(--serif);font-size:27px}.mobile-reveal{opacity:1;transform:none}.js .mobile-reveal{opacity:0;transform:translateY(16px);transition:.45s ease}.js .mobile-reveal.is-visible{opacity:1;transform:none}}
+@media(max-width:390px){.mobile-story{padding-left:14px;padding-right:14px}.mobile-story-card{padding:21px 15px}.mobile-story-head p,.mobile-story-card>p{font-size:17px}.mobile-kpis{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.js .mobile-reveal{opacity:1!important;transform:none!important;transition:none!important}}
