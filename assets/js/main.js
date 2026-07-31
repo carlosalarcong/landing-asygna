@@ -225,4 +225,3 @@ if(statsEl) statsObs.observe(statsEl);
   card.addEventListener('mouseleave',function(){card.style.transform=''});
   window.addEventListener('scroll',function(){if(!contact)return;var r=contact.getBoundingClientRect(),p=Math.max(-1,Math.min(1,(window.innerHeight/2-(r.top+r.height/2))/window.innerHeight));contact.style.setProperty('--contact-shift',(p*18)+'px')},{passive:true});
 })();
-(function(){if(!window.matchMedia('(max-width: 900px)').matches)return;var a=[].slice.call(document.querySelectorAll('.mobile-reveal'));if(!('IntersectionObserver'in window)){a.forEach(function(e){e.classList.add('is-visible')});return}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');o.unobserve(e.target)}})},{threshold:.08});a.forEach(function(e){o.observe(e)})})();
