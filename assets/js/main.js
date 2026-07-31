@@ -192,6 +192,8 @@ if(statsEl) statsObs.observe(statsEl);
 // Narrativa controlada por scroll
 (function(){
   var story=document.getElementById('shift-story');if(!story)return;
+  // En móvil la historia es una lectura estática: no se registran eventos ni animaciones de scroll.
+  if(window.matchMedia('(max-width: 900px)').matches){return;}
   var copies=[].slice.call(document.querySelectorAll('.shift-step')),dots=[].slice.call(document.querySelectorAll('.story-dot')),scenes=[].slice.call(document.querySelectorAll('.story-scene'));
   var workers=[].slice.call(document.querySelectorAll('.shift-worker')),metrics=[].slice.call(document.querySelectorAll('.shift-metric')),calendar=document.getElementById('shift-calendar'),finalLogo=document.getElementById('stage-final'),progressBar=document.getElementById('scroll-progress'),status=document.getElementById('stage-status');
   var starts=[{x:15,y:20},{x:50,y:18},{x:85,y:22},{x:30,y:70},{x:70,y:72}],targets=[{x:10,y:31},{x:30,y:52},{x:50,y:31},{x:70,y:52},{x:90,y:31}];
