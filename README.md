@@ -23,3 +23,7 @@ El formulario conserva su integración con Web3Forms. Revisa la clave de acceso 
 ## Dominio
 
 Los metadatos SEO usan `https://asygna.cl/`. Cambia esa URL en `index.html`, `robots.txt` y `sitemap.xml` si el dominio final es diferente.
+
+## Versión V8
+
+Incluye correcciones específicas para Safari/iPhone: separación de texto y panel, títulos sin palabras pegadas, escenas compactas y listas completas.

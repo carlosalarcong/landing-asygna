@@ -429,3 +429,64 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
   .stage-status{display:none}
   .invoice-row{font-size:9px}.invoice-total strong{font-size:23px}
 }
+
+/* ═══ V8 · Correcciones específicas para Safari/iPhone ═══ */
+@media (max-width: 900px){
+  /* El indicador ya no atraviesa el título de la escena */
+  .shift-copy{min-height:276px;padding:0 2px;position:relative}
+  .story-dots{position:absolute;top:3px;right:0;margin:0;gap:4px;z-index:4}
+  .story-dot{width:11px;height:3px}.story-dot.active{width:23px}
+
+  /* Mantener los saltos de línea evita palabras pegadas al ocultar <br> */
+  .shift-step h2 br{display:block}
+  .shift-step h2{font-size:clamp(32px,9vw,43px);line-height:1.04;margin:18px 0 14px}
+  .shift-step p{font-size:14px;line-height:1.52;padding-bottom:5px}
+
+  /* El panel comienza después del texto; no se monta sobre el párrafo */
+  .shift-sticky{padding-top:82px;gap:12px;align-content:start}
+  .shift-stage{height:440px;min-height:440px;max-height:440px;margin-top:0}
+  .stage-workspace{inset:66px 12px 12px}
+
+  /* Asignación: estas métricas sí pertenecen a la escena, pero en móvil
+     se ocultan para priorizar el calendario y evitar que queden cortadas. */
+  .shift-metric{display:none!important}
+  .shift-calendar{inset:30px 0 8px}
+  .shift-worker{width:94px;padding:7px 8px}
+
+  /* Reemplazos: todo el listado cabe dentro del panel móvil */
+  .absence-card{top:7%;padding:12px}
+  .absence-head{margin-bottom:10px;gap:8px}
+  .absence-head b{font-size:12px}.alert-badge{font-size:8px;padding:4px 7px;white-space:nowrap}
+  .absence-person{padding:10px}.absence-person strong{font-size:12px}.absence-person small{font-size:9px}
+  .replacement-line{top:40%;height:26px}
+  .replacement-card{top:48%;padding:11px 13px}
+  .candidate{padding:8px 0}.candidate-name{font-size:11px}.candidate-fit{font-size:9px}
+  .resolve-check{display:none!important}
+
+  /* Cumplimiento: línea vertical más compacta */
+  .validation-card{inset:8% 3% 4%;padding:15px 14px}
+  .validation-card>b{max-width:100%;font-size:13px;padding-right:0}
+  .validation-pill{display:none}
+  .timeline{height:236px;margin-top:18px}
+  .timeline-line{left:27px;top:18px;height:190px}
+  .time-point{left:7px!important;width:42px;height:42px;font-size:10px}
+  .tp1{top:0}.tp2{top:75px}.tp3{top:150px}
+  .time-note{left:62px!important;font-size:11px}
+  .tn1{top:13px}.tn2{top:88px}.tn3{top:163px}
+
+  /* Finanzas: tabla compacta y total protegido */
+  .invoice-card{top:7%;bottom:3%;padding:15px}
+  .invoice-row{padding:8px 0;font-size:9px;grid-template-columns:1.15fr .45fr .8fr}
+  .invoice-row.header{font-size:8px}
+  .invoice-total{padding-top:12px;align-items:center}
+  .invoice-total strong{font-size:clamp(21px,6.5vw,28px)}
+
+  /* La cabecera del panel no invade el texto exterior */
+  .stage-bar{position:relative;z-index:30;background:rgba(7,18,14,.96)}
+}
+
+@media (max-width: 430px){
+  .shift-copy{min-height:268px}
+  .shift-stage{height:430px;min-height:430px;max-height:430px}
+  .shift-step h2{font-size:clamp(31px,9vw,40px)}
+}
