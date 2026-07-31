@@ -27,8 +27,3 @@ Los metadatos SEO usan `https://asygna.cl/`. Cambia esa URL en `index.html`, `ro
 ## Versión V8
 
 Incluye correcciones específicas para Safari/iPhone: separación de texto y panel, títulos sin palabras pegadas, escenas compactas y listas completas.
-
-
-## Experiencia responsive
-- Escritorio (>900 px): narrativa cinematográfica con scroll.
-- Móvil (<=900 px): recorrido vertical independiente, sin sticky ni animaciones continuas.
