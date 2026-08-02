@@ -20,8 +20,6 @@
     .nav-links a { font-size: 14px; color: var(--text-inverse-dim); text-decoration: none; font-weight: 400; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text-inverse); }
     .nav-right { display: flex; align-items: center; gap: 12px; }
-    .nav-login { font-size: 14px; color: var(--text-inverse-dim); text-decoration: none; font-weight: 400; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border-inverse); transition: all 0.2s; }
-    .nav-login:hover { color: var(--text-inverse); background: rgba(255,255,255,0.06); }
     .nav-demo { font-size: 14px; color: var(--brand-bright); text-decoration: none; font-weight: 500; padding: 8px 14px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
     .nav-demo::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-bright); box-shadow: 0 0 6px rgba(43,200,147,0.8); animation: pulse 2s infinite; }
     .nav-demo:hover { color: #fff; background: rgba(43,200,147,0.1); }
@@ -264,7 +262,6 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .nav-login { display: none; }
       .stats { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
       .features-grid { grid-template-columns: 1fr; }
@@ -373,7 +370,7 @@ footer .asygna-mark{width:26px;height:26px}footer .asygna-wordmark{font-size:20p
 @media (max-width: 900px){
   body{padding-bottom:0!important}
   nav{height:72px!important;padding:0 16px!important;gap:10px!important}
-  .nav-links,.nav-demo,.nav-login{display:none!important}
+  .nav-links,.nav-demo{display:none!important}
   .nav-logo{margin-right:auto}
   .asygna-mark{width:31px;height:31px}.asygna-wordmark{font-size:25px}
   .nav-cta{padding:10px 14px!important;font-size:13px!important;white-space:nowrap}
