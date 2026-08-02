@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Asygna · Operación de turnos bajo control</title>
-<meta content="Asygna organiza turnos, cubre ausencias, valida horas reales y automatiza facturación y liquidaciones desde una sola plataforma." name="description"/>
+<meta content="Asygna reduce turnos descubiertos, horas administrativas y pérdidas entre lo planificado, lo trabajado y lo facturado." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
@@ -21,7 +21,7 @@
 <meta content="es_CL" property="og:locale"/>
 <meta content="Asygna" property="og:site_name"/>
 <meta content="Asygna · Operación de turnos bajo control" property="og:title"/>
-<meta content="Asigna personal, cubre ausencias y transforma horas reales en pagos, sin planillas ni llamadas." property="og:description"/>
+<meta content="Menos turnos descubiertos, menos horas administrativas y menos dinero perdido entre lo planificado, lo trabajado y lo facturado." property="og:description"/>
 <meta content="https://asygna.cl/" property="og:url"/>
 <meta content="https://asygna.cl/assets/images/og-image.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -29,7 +29,7 @@
 <meta content="Asygna, operación de turnos bajo control" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Asygna · Operación de turnos bajo control" name="twitter:title"/>
-<meta content="Asigna personal, cubre ausencias y transforma horas reales en pagos." name="twitter:description"/>
+<meta content="Menos turnos descubiertos, menos horas administrativas y menos dinero perdido entre lo planificado, lo trabajado y lo facturado." name="twitter:description"/>
 <meta content="https://asygna.cl/assets/images/og-image.png" name="twitter:image"/>
 <link href="assets/favicon/favicon.ico" rel="icon" sizes="any"/>
 <link href="assets/favicon/favicon.svg" rel="icon" type="image/svg+xml"/>
@@ -110,7 +110,7 @@
 <div class="hero">
 <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Próximamente · Acceso anticipado abierto</div>
 <h1>Cada turno, <em>bajo control.</em></h1>
-<p class="hero-sub" id="hero-sub">Asigna personal, cubre ausencias y transforma horas reales en pagos, sin planillas ni llamadas.</p>
+<p class="hero-sub" id="hero-sub">Menos turnos descubiertos, menos horas administrativas y menos dinero perdido entre lo planificado, lo trabajado y lo facturado.</p>
 <div class="hero-actions">
 <a class="btn-primary" href="#contact">Asegurar mi cupo</a>
 <a class="btn-ghost-dark" href="https://demo.asygna.cl" rel="noopener" target="_blank">
@@ -387,7 +387,7 @@
 <section class="founding-invite" id="early">
 <div class="founding-panel sr">
 <div>
-<div class="section-label">Founding members</div>
+<div class="section-label">Clientes fundadores</div>
 <h2>Construye con nosotros la nueva forma de operar equipos.</h2>
 <p>Accede antes del lanzamiento general, recibe implementación inicial y participa directamente en las prioridades del producto.</p>
 </div>
@@ -402,71 +402,57 @@
 </section>
 <section id="pricing">
 <div class="pricing-header sr">
-<div class="section-label">Precios</div>
-<h2>Planes que crecen<br/>con tu equipo</h2>
-<p class="section-sub">Valores referenciales de lanzamiento. El modelo definitivo se confirmará según usuarios administrativos, recursos activos y complejidad operativa.</p>
+<div class="section-label">Un modelo simple</div>
+<h2>Un precio que sigue<br/>el tamaño real de tu operación</h2>
+<p class="section-sub">Pagas por las personas activas que coordinas en Asygna. Los clientes, sucursales y puntos de servicio que necesites están incluidos.</p>
 <div style="margin-top:1.5rem;">
-<span class="launch-banner">Precios referenciales · Configuración final durante el acceso anticipado</span>
+<span class="launch-banner">Programa Fundadores · Cupos limitados</span>
 </div>
 </div>
 <div class="billing-toggle">
 <span class="toggle-label active" id="lbl-monthly">Mensual</span>
-<button aria-label="Cambiar ciclo de facturación" class="toggle-pill-btn" onclick="toggleBilling()">
+<button aria-label="Cambiar ciclo de facturación" aria-pressed="false" class="toggle-pill-btn" id="billing-toggle" onclick="toggleBilling()">
 <div class="toggle-thumb" id="toggle-thumb"></div>
 </button>
 <span class="toggle-label" id="lbl-annual">Anual</span>
 <span class="badge-save">Ahorra 20%</span>
 </div>
-<div class="plans-grid">
-<div class="plan-card sr">
-<div class="plan-name">Básico</div>
-<div class="plan-price-old">$19.980 CLP</div>
-<div class="plan-price">$9.990<sub> CLP</sub></div>
-<div class="plan-period">por licencia / mes</div>
-<div class="plan-licenses">Alcance referencial del plan</div>
+<div class="pricing-layout">
+<div class="plan-card founder-plan featured sr">
+<div class="featured-badge">Oferta fundadora</div>
+<div class="plan-name">Programa Fundadores</div>
+<div class="plan-price" id="founder-price">$12.490<sub> CLP</sub></div>
+<div class="plan-period" id="founder-period">por persona activa / mes</div>
+<div class="plan-licenses" id="founder-minimum">Mínimo 10 personas · desde $124.900 CLP/mes</div>
+<p class="plan-summary">Toda la operación conectada desde el primer turno hasta la liquidación y facturación, sin bloquear el control financiero.</p>
 <ul class="plan-features">
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Asignación de turnos</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestión de personal</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Reportes básicos</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 sucursal</li>
-<li class="disabled"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg> Control financiero</li>
-<li class="disabled"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg> Multi-sucursal</li>
+<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Planificación, asignación y cobertura de turnos</li>
+<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Ausencias, reemplazos y trazabilidad</li>
+<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Validación de horas y cumplimiento</li>
+<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Liquidaciones, facturación y reportes</li>
+<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Clientes y puntos de servicio ilimitados</li>
+<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Implementación inicial acompañada</li>
 </ul>
-<a class="plan-btn plan-btn-outline" href="#contact">Reservar precio</a>
+<a class="plan-btn plan-btn-solid" href="#contact">Quiero ser cliente fundador</a>
 </div>
-<div class="plan-card featured sr sr-d1">
-<div class="featured-badge">Más popular</div>
-<div class="plan-name">Profesional</div>
-<div class="plan-price-old">$35.980 CLP</div>
-<div class="plan-price">$17.990<sub> CLP</sub></div>
-<div class="plan-period">por licencia / mes</div>
-<div class="plan-licenses">Alcance referencial del plan</div>
-<ul class="plan-features">
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Todo lo del plan Básico</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Control financiero</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Reportes avanzados</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Hasta 3 sucursales</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Soporte prioritario</li>
-<li class="disabled"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg> API + integraciones</li>
-</ul>
-<a class="plan-btn plan-btn-solid" href="#contact">Reservar precio</a>
+<aside class="pricing-explainer sr sr-d1">
+<div class="explainer-kicker">Cómo se calcula</div>
+<h3>Una persona,<br/>un solo cobro.</h3>
+<div class="counting-list">
+<div class="counting-item"><span>01</span><div><strong>Recursos activos</strong><p>Quienes cubren turnos o prestan servicios.</p></div></div>
+<div class="counting-item"><span>02</span><div><strong>Usuarios activos sin recurso</strong><p>Administradores, supervisores u otros usuarios también cuentan.</p></div></div>
+<div class="counting-item"><span>03</span><div><strong>Sin duplicar personas</strong><p>Si alguien tiene usuario y recurso vinculados, se cobra una sola vez.</p></div></div>
 </div>
-<div class="plan-card sr sr-d2">
-<div class="plan-name">Enterprise</div>
-<div class="plan-price">Cotización<sub> personalizada</sub></div>
-<div class="plan-period">según volumen</div>
-<div class="plan-licenses">Alcance referencial del plan</div>
-<ul class="plan-features">
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Todo lo del plan Pro</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> API + integraciones</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> SSO / LDAP</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-sucursal ilimitado</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> SLA garantizado</li>
-<li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Onboarding dedicado</li>
-</ul>
-<a class="plan-btn plan-btn-outline" href="#contact">Hablar con nosotros</a>
+<div class="unlimited-note"><strong>Incluido sin costo adicional</strong><span>Todos los clientes, sucursales y puntos de servicio que tu operación necesite.</span></div>
+<div class="pricing-example">
+<span>Ejemplo · 100 personas activas</span>
+<strong id="pricing-example-value">$1.249.000 CLP/mes</strong>
+<small id="pricing-example-caption">Modalidad mensual</small>
+</div>
+<p class="consultative-note"><strong>¿Necesitas integraciones, SLA u onboarding masivo?</strong> Diseñamos la implementación contigo sin esconder el corazón del producto detrás de otro plan.</p>
 </div>
 </div>
+<p class="pricing-footnote sr">El mínimo facturable es de 10 personas activas. El precio final se confirma durante una evaluación breve de tu operación.</p>
 </section>
 <section id="faq">
 <div class="faq-inner">
@@ -474,6 +460,10 @@
 <div class="section-label">FAQ</div>
 <h2>Preguntas frecuentes</h2>
 </div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Qué considera Asygna como una persona activa?</span><span>⌄</span></button><div class="faq-a">Se consideran los recursos activos y los usuarios activos que no estén vinculados a un recurso activo. Si una persona tiene ambas cosas, cuenta una sola vez.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Los administradores y supervisores también cuentan?</span><span>⌄</span></button><div class="faq-a">Sí, cuando tienen un usuario activo y no están vinculados a un recurso activo. El cobro depende de las personas que usan o forman parte de la operación, no del nombre de su rol.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Se cobra por cada cliente o punto de servicio?</span><span>⌄</span></button><div class="faq-a">No. Puedes administrar todos los clientes, sucursales, instalaciones, domicilios, faenas y puntos de servicio que necesites.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿El control financiero está incluido?</span><span>⌄</span></button><div class="faq-a">Sí. La validación de horas, liquidaciones y facturación son parte del flujo central de Asygna y están incluidas en el Programa Fundadores.</div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Puedo importar mi planificación actual desde Excel?</span><span>⌄</span></button><div class="faq-a">Sí. Durante la implementación podemos cargar personal, clientes, puntos de servicio y planificación vigente desde archivos estructurados.</div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Los trabajadores necesitan instalar una aplicación?</span><span>⌄</span></button><div class="faq-a">Dependerá del flujo habilitado para cada empresa. Asygna está pensado para que administradores y supervisores gestionen la operación y para que el personal acceda solo a las acciones que le correspondan.</div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Cómo se validan las horas efectivamente trabajadas?</span><span>⌄</span></button><div class="faq-a">Las horas planificadas se comparan con los registros disponibles de entrada, salida y cumplimiento, conservando trazabilidad para revisión y aprobación.</div></div>
@@ -485,13 +475,13 @@
 </section>
 <section id="contact">
 <div class="contact-inner sr">
-<div class="section-label">Acceso anticipado</div>
-<h2>Cuéntanos cómo funciona<br/>tu operación hoy.</h2>
-<p class="section-sub">Te contactaremos para revisar tu modelo de turnos, clientes, puntos de servicio y necesidades de implementación.</p>
+<div class="section-label">Programa Fundadores</div>
+<h2>Calculemos el valor<br/>para tu operación.</h2>
+<p class="section-sub">Revisaremos cuántas personas activas coordinas, cómo funcionan tus turnos y qué necesitas para comenzar.</p>
 <div class="contact-card">
 <div class="contact-form" id="contact-form">
 <input name="access_key" type="hidden" value="c2ec01fe-72f5-439d-8c7a-2777e86e1159"/>
-<input name="subject" type="hidden" value="Nuevo founding member — Asygna"/>
+<input name="subject" type="hidden" value="Nueva consulta Programa Fundadores — Asygna"/>
 <input name="from_name" type="hidden" value="Landing Asygna"/>
 <input name="botcheck" style="display:none" type="checkbox"/>
 <div class="form-row">
@@ -499,12 +489,12 @@
 <div class="form-group"><label class="form-label">Apellido</label><input name="apellido" placeholder="Tu apellido" required="" type="text"/></div>
 </div>
 <div class="form-group"><label class="form-label">Correo corporativo</label><input name="email" placeholder="nombre@empresa.cl" required="" type="email"/></div>
-<div class="form-group"><label class="form-label">Tipo de operación</label><select name="tipo_operacion" required=""><option value="">Seleccionar...</option><option>Instalaciones fijas</option><option>Domicilios</option><option>Sucursales</option><option>Faenas</option><option>Rutas o servicios móviles</option><option>Otro</option></select></div><div class="form-group"><label class="form-label">Personas que asignas actualmente</label><select name="tamano_operacion" required=""><option value="">Seleccionar...</option><option>1–25</option><option>26–100</option><option>101–500</option><option>Más de 500</option></select></div>
-<button class="form-submit" id="form-btn" onclick="submitForm(event)">Reservar mi cupo gratis</button>
+<div class="form-group"><label class="form-label">Tipo de operación</label><select name="tipo_operacion" required=""><option value="">Seleccionar...</option><option>Instalaciones fijas</option><option>Domicilios</option><option>Sucursales</option><option>Faenas</option><option>Rutas o servicios móviles</option><option>Otro</option></select></div><div class="form-group"><label class="form-label">Personas activas en tu operación</label><select name="tamano_operacion" required=""><option value="">Seleccionar...</option><option>Menos de 10 (mínimo facturable: 10)</option><option>10–25</option><option>26–100</option><option>101–500</option><option>Más de 500</option></select></div>
+<button class="form-submit" id="form-btn" onclick="submitForm(event)">Solicitar evaluación y precio</button>
 <div id="form-msg" style="display:none;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:500;margin-top:8px;"></div>
 </div>
 <div class="contact-trust">
-<div class="trust-item"><div class="trust-dot"></div>Sin compromiso</div>
+<div class="trust-item"><div class="trust-dot"></div>Precio por persona activa</div>
 <div class="trust-item"><div class="trust-dot"></div>Implementación acompañada</div>
 <div class="trust-item"><div class="trust-dot"></div>Información protegida</div>
 </div>

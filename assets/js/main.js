@@ -30,7 +30,7 @@ function selectIndustry(id) {
     activeId = null;
     document.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('active'); });
     document.getElementById('hero-industry').textContent = 'caos.';
-    document.getElementById('hero-sub').textContent = 'Asygna simplifica la planificación de equipos rotativos y la gestión financiera de tu organización, desde una sola plataforma. Sé de los primeros en probarla.';
+    document.getElementById('hero-sub').textContent = 'Menos turnos descubiertos, menos horas administrativas y menos dinero perdido entre lo planificado, lo trabajado y lo facturado.';
     document.getElementById('preview-title').textContent = 'Selecciona un rubro para ver cómo Asygna se adapta';
     document.getElementById('preview-desc').textContent = 'Cada industria tiene sus propios desafíos de turno. Asygna viene preconfigurado para los más comunes.';
     document.getElementById('preview-badge').style.visibility = 'hidden';
@@ -61,6 +61,12 @@ function toggleBilling() {
   document.getElementById('toggle-thumb').className = 'toggle-thumb' + (isAnnual ? ' annual' : '');
   document.getElementById('lbl-monthly').className = 'toggle-label' + (isAnnual ? '' : ' active');
   document.getElementById('lbl-annual').className = 'toggle-label' + (isAnnual ? ' active' : '');
+  document.getElementById('billing-toggle').setAttribute('aria-pressed', isAnnual ? 'true' : 'false');
+  document.getElementById('founder-price').innerHTML = isAnnual ? '$9.990<sub> CLP</sub>' : '$12.490<sub> CLP</sub>';
+  document.getElementById('founder-period').textContent = isAnnual ? 'por persona activa / mes, facturado anual' : 'por persona activa / mes';
+  document.getElementById('founder-minimum').textContent = isAnnual ? 'Mínimo 10 personas · desde $1.198.800 CLP/año' : 'Mínimo 10 personas · desde $124.900 CLP/mes';
+  document.getElementById('pricing-example-value').textContent = isAnnual ? '$999.000 CLP/mes' : '$1.249.000 CLP/mes';
+  document.getElementById('pricing-example-caption').textContent = isAnnual ? 'Equivalente mensual · facturado $11.988.000 CLP/año' : 'Modalidad mensual';
 }
 
 function toggleFaq(btn) {
