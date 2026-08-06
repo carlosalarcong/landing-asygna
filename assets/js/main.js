@@ -65,8 +65,8 @@ function toggleBilling() {
   document.getElementById('founder-price').innerHTML = isAnnual ? '$9.990<sub> CLP</sub>' : '$12.490<sub> CLP</sub>';
   document.getElementById('founder-period').textContent = isAnnual ? 'por persona activa / mes, facturado anual' : 'por persona activa / mes';
   document.getElementById('founder-minimum').textContent = isAnnual ? 'Mínimo 10 personas · desde $1.198.800 CLP/año' : 'Mínimo 10 personas · desde $124.900 CLP/mes';
-  document.getElementById('pricing-example-value').textContent = isAnnual ? '$999.000 CLP/mes' : '$1.249.000 CLP/mes';
-  document.getElementById('pricing-example-caption').textContent = isAnnual ? 'Equivalente mensual · facturado $11.988.000 CLP/año' : 'Modalidad mensual';
+  document.getElementById('pricing-example-value').textContent = isAnnual ? '$899.000 CLP/mes' : '$1.124.000 CLP/mes';
+  document.getElementById('pricing-example-caption').textContent = isAnnual ? 'Equivalente mensual · facturado $10.788.000 CLP/año' : 'Modalidad mensual';
 }
 
 function toggleFaq(btn) {
