@@ -37,7 +37,7 @@
 <link href="assets/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="assets/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="site.webmanifest" rel="manifest"/>
-<link href="assets/css/style.css" rel="stylesheet"/>
+<link href="assets/css/style.css?v=20260806-2" rel="stylesheet"/>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -424,6 +424,12 @@
 <div class="plan-price" id="founder-price">$12.490<sub> CLP</sub></div>
 <div class="plan-period" id="founder-period">por persona activa / mes</div>
 <div class="plan-licenses" id="founder-minimum">Mínimo 10 personas · desde $124.900 CLP/mes</div>
+<div aria-label="Precios por tramo" class="volume-pricing">
+<div class="volume-pricing-header"><strong>Tu precio baja con el volumen</strong><span>Automático</span></div>
+<div class="volume-tier"><span>Personas 1–50</span><strong><span id="founder-tier-one-price">$12.490</span><small> c/u/mes</small></strong></div>
+<div class="volume-tier volume-tier-discount"><span>Desde la persona 51</span><strong><span id="founder-tier-two-price">$9.990</span><small> c/u/mes</small></strong></div>
+<p id="founder-tier-caption">Cobro por tramos: solo las personas desde la 51 pagan el precio reducido.</p>
+</div>
 <p class="plan-summary">Toda la operación conectada desde el primer turno hasta la liquidación y facturación, sin bloquear el control financiero.</p>
 <ul class="plan-features">
 <li><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg> Planificación, asignación y cobertura de turnos</li>
@@ -442,7 +448,6 @@
 <div class="counting-item"><span>01</span><div><strong>Recursos activos</strong><p>Quienes cubren turnos o prestan servicios.</p></div></div>
 <div class="counting-item"><span>02</span><div><strong>Usuarios activos sin recurso</strong><p>Administradores, supervisores u otros usuarios también cuentan.</p></div></div>
 <div class="counting-item"><span>03</span><div><strong>Sin duplicar personas</strong><p>Si alguien tiene usuario y recurso vinculados, se cobra una sola vez.</p></div></div>
-<div class="counting-item"><span>04</span><div><strong>Descuento por volumen</strong><p>En modalidad mensual, las primeras 50 personas a $12.490 c/u. Desde la persona 51, $9.990 c/u.</p></div></div>
 </div>
 <div class="unlimited-note"><strong>Incluido sin costo adicional</strong><span>Todos los clientes, sucursales y puntos de servicio que tu operación necesite.</span></div>
 <div class="pricing-example">
@@ -462,7 +467,7 @@
 <h2>Preguntas frecuentes</h2>
 </div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Qué considera Asygna como una persona activa?</span><span>⌄</span></button><div class="faq-a">Se consideran los recursos activos y los usuarios activos que no estén vinculados a un recurso activo. Si una persona tiene ambas cosas, cuenta una sola vez.</div></div>
-<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿El precio baja si tengo más personas?</span><span>⌄</span></button><div class="faq-a">Sí. En modalidad mensual, las primeras 50 personas cuestan $12.490 c/u y, desde la persona 51, $9.990 c/u. El descuento se aplica por tramo: las primeras 50 mantienen su precio.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿El precio baja si tengo más personas?</span><span>⌄</span></button><div class="faq-a">Sí. El precio baja automáticamente desde la persona 51 y se calcula por tramos. En modalidad mensual, las primeras 50 personas cuestan $12.490 c/u y las siguientes $9.990 c/u. En modalidad anual, los valores son $9.990 y $7.990 c/u/mes, respectivamente. Las primeras 50 siempre mantienen el valor de su tramo.</div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Los administradores y supervisores también cuentan?</span><span>⌄</span></button><div class="faq-a">Sí, cuando tienen un usuario activo y no están vinculados a un recurso activo. El cobro depende de las personas que usan o forman parte de la operación, no del nombre de su rol.</div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿Se cobra por cada cliente o punto de servicio?</span><span>⌄</span></button><div class="faq-a">No. Puedes administrar todos los clientes, sucursales, instalaciones, domicilios, faenas y puntos de servicio que necesites.</div></div>
 <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">¿El control financiero está incluido?</span><span>⌄</span></button><div class="faq-a">Sí. La validación de horas, liquidaciones y facturación son parte del flujo central de Asygna y están incluidas en el Programa Fundadores.</div></div>
@@ -524,5 +529,5 @@
 <div class="footer-copy">© 2026 Asygna · asygna.cl</div>
 </footer>
 
-<script defer src="assets/js/main.js"></script></body>
+<script defer src="assets/js/main.js?v=20260806-2"></script></body>
 </html>
