@@ -67,9 +67,9 @@ function toggleBilling() {
   document.getElementById('founder-minimum').textContent = isAnnual ? 'Mínimo 10 personas · desde $1.198.800 CLP/año' : 'Mínimo 10 personas · desde $124.900 CLP/mes';
   document.getElementById('founder-tier-one-price').textContent = isAnnual ? '$9.990' : '$12.490';
   document.getElementById('founder-tier-two-price').textContent = isAnnual ? '$7.990' : '$9.990';
-  document.getElementById('founder-tier-caption').textContent = isAnnual ? 'Facturado anualmente. Cada persona conserva el valor de su tramo.' : 'Cobro por tramos: solo las personas desde la 51 pagan el precio reducido.';
-  document.getElementById('pricing-example-value').textContent = isAnnual ? '$899.000 CLP/mes' : '$1.124.000 CLP/mes';
-  document.getElementById('pricing-example-caption').textContent = isAnnual ? 'Equivalente mensual · facturado $10.788.000 CLP/año' : 'Modalidad mensual';
+  document.getElementById('founder-tier-caption').textContent = isAnnual ? 'Facturado anualmente. Al superar 50 personas activas, todas pasan a pagar el precio reducido.' : 'Al superar 50 personas activas, todas pasan a pagar el precio reducido.';
+  document.getElementById('pricing-example-value').textContent = isAnnual ? '$799.000 CLP/mes' : '$999.000 CLP/mes';
+  document.getElementById('pricing-example-caption').textContent = isAnnual ? 'Equivalente mensual · facturado $9.588.000 CLP/año' : 'Modalidad mensual';
 }
 
 function toggleFaq(btn) {
