@@ -55,22 +55,90 @@ function selectIndustry(id) {
   badge.style.visibility = 'visible';
 }
 
+// ═══ Precio progresivo por tramos (Programa Fundadores) ═══
+var FOUNDER_BASE = 124900;
+var FOUNDER_MIN_PEOPLE = 10;
+var ANNUAL_DISCOUNT = 0.2;
+var PRICE_TIERS = [
+  {from: 10, to: 50, rate: 7490},
+  {from: 50, to: 100, rate: 4990},
+  {from: 100, to: 250, rate: 3490},
+  {from: 250, to: 500, rate: 2490},
+  {from: 500, to: 1000, rate: 1790},
+  {from: 1000, to: Infinity, rate: 1290}
+];
+
+function clp(n) {
+  return '$' + Math.round(n).toLocaleString('es-CL');
+}
+
+function calcMonthlyPrice(people) {
+  var n = Math.max(FOUNDER_MIN_PEOPLE, Math.round(people));
+  var total = FOUNDER_BASE;
+  PRICE_TIERS.forEach(function(t) {
+    if (n > t.from) total += (Math.min(n, t.to) - t.from) * t.rate;
+  });
+  return total;
+}
+
 var isAnnual = false;
+var calcCurrentPeople = 100;
+
 function toggleBilling() {
   isAnnual = !isAnnual;
   document.getElementById('toggle-thumb').className = 'toggle-thumb' + (isAnnual ? ' annual' : '');
   document.getElementById('lbl-monthly').className = 'toggle-label' + (isAnnual ? '' : ' active');
   document.getElementById('lbl-annual').className = 'toggle-label' + (isAnnual ? ' active' : '');
   document.getElementById('billing-toggle').setAttribute('aria-pressed', isAnnual ? 'true' : 'false');
-  document.getElementById('founder-price').innerHTML = isAnnual ? '$9.990<sub> CLP</sub>' : '$12.490<sub> CLP</sub>';
-  document.getElementById('founder-period').textContent = isAnnual ? 'por persona activa / mes, facturado anual' : 'por persona activa / mes';
-  document.getElementById('founder-minimum').textContent = isAnnual ? 'Mínimo 10 personas · desde $1.198.800 CLP/año' : 'Mínimo 10 personas · desde $124.900 CLP/mes';
-  document.getElementById('founder-tier-one-price').textContent = isAnnual ? '$9.990' : '$12.490';
-  document.getElementById('founder-tier-two-price').textContent = isAnnual ? '$7.990' : '$9.990';
-  document.getElementById('founder-tier-caption').textContent = isAnnual ? 'Facturado anualmente. Al superar 50 personas activas, todas pasan a pagar el precio reducido.' : 'Al superar 50 personas activas, todas pasan a pagar el precio reducido.';
-  document.getElementById('pricing-example-value').textContent = isAnnual ? '$799.000 CLP/mes' : '$999.000 CLP/mes';
-  document.getElementById('pricing-example-caption').textContent = isAnnual ? 'Equivalente mensual · facturado $9.588.000 CLP/año' : 'Modalidad mensual';
+  updateFounderHeader();
+  updateCalculator();
 }
+
+function updateFounderHeader() {
+  var basePrice = isAnnual ? FOUNDER_BASE * (1 - ANNUAL_DISCOUNT) : FOUNDER_BASE;
+  document.getElementById('founder-price').innerHTML = clp(basePrice) + '<sub> CLP/mes</sub>';
+  document.getElementById('founder-minimum').textContent = isAnnual
+    ? '10 personas activas incluidas · facturado anual'
+    : '10 personas activas incluidas';
+}
+
+function updateCalculator() {
+  var people = calcCurrentPeople;
+  var monthly = calcMonthlyPrice(people);
+  var displayed = isAnnual ? monthly * (1 - ANNUAL_DISCOUNT) : monthly;
+  var totalEl = document.getElementById('calc-total');
+  var avgEl = document.getElementById('calc-avg');
+  if (!totalEl || !avgEl) return;
+  totalEl.textContent = clp(displayed);
+  avgEl.textContent = clp(displayed / people) + ' promedio por persona';
+  var enterpriseEl = document.getElementById('calc-enterprise');
+  if (enterpriseEl) enterpriseEl.hidden = people <= 2000;
+  document.querySelectorAll('#tier-table .tier-row').forEach(function(row) {
+    var from = Number(row.getAttribute('data-from'));
+    var to = Number(row.getAttribute('data-to'));
+    row.classList.toggle('active-tier', people > from && people <= to);
+  });
+}
+
+function initCalculator() {
+  var numberInput = document.getElementById('calc-input');
+  var slider = document.getElementById('calc-slider');
+  if (!numberInput || !slider) return;
+  function setPeople(value, syncSlider) {
+    var n = Math.max(1, Math.min(20000, Math.round(Number(value)) || 1));
+    calcCurrentPeople = n;
+    numberInput.value = n;
+    if (syncSlider) slider.value = Math.min(n, Number(slider.max));
+    var fillPct = (Number(slider.value) - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100;
+    slider.style.setProperty('--fill', fillPct + '%');
+    updateCalculator();
+  }
+  numberInput.addEventListener('input', function() { setPeople(numberInput.value, true); });
+  slider.addEventListener('input', function() { setPeople(slider.value, false); });
+  setPeople(calcCurrentPeople, true);
+}
+
+if (document.getElementById('calc-input')) { initCalculator(); }
 
 function toggleFaq(btn) {
   var answer = btn.nextElementSibling;
