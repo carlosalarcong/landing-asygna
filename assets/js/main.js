@@ -135,6 +135,7 @@ function initCalculator() {
   }
   numberInput.addEventListener('input', function() { setPeople(numberInput.value, true); });
   slider.addEventListener('input', function() { setPeople(slider.value, false); });
+  slider.addEventListener('change', function() { setPeople(slider.value, false); });
   setPeople(calcCurrentPeople, true);
 }
 
